@@ -10,7 +10,7 @@ aliases:
 defaults: &defaults
   working_directory: *working_directory
   docker:
-    - image: circleci/ruby:2.7.1-node-browsers
+    - image: circleci/ruby:3
       environment:
         # Up to circle-ci plan max. RAM
         NODE_OPTIONS: --max-old-space-size=6144
