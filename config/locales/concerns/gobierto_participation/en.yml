@@ -1,6 +1,0 @@
----
-en:
-  concerns:
-    gobierto_participation:
-      process_stages_helper:
-        stage_not_active: Looks like this process stage is no longer active

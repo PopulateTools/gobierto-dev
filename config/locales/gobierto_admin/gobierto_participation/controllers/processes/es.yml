@@ -1,9 +1,0 @@
----
-es:
-  gobierto_admin:
-    gobierto_participation:
-      configuration:
-        settings:
-          update:
-            error: Se ha producido un error al actualizar la configuración
-            success: Configuración guardada correctamente

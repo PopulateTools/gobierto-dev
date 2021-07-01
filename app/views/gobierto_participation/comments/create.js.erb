@@ -1,4 +1,0 @@
-<% if @contribution %>
-  $("#comments-list").html("<%= j render(partial: 'gobierto_participation/processes/contributions/comments', locals: { commentable: @contribution, disabled: @contribution.contribution_container.contributions_forbidden? }) %>");
-  $('#text-area-contribution').val('');
-<% end %>

@@ -1,5 +1,0 @@
-<% if @vote %>
-  <% if @vote.votable_type == "GobiertoParticipation::Comment" %>
-    $("#votes-links-<%= @vote.votable.id %>").html("<%= j render(partial: 'gobierto_participation/processes/contributions/comment_votes', locals: { comment: @vote.votable, disabled: false }) %>");
-  <% end %>
-<% end %>
