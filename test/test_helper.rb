@@ -58,6 +58,8 @@ end
 ActiveRecord::Migration.maintain_test_schema!
 
 class ActiveSupport::TestCase
+  parallelize
+
   include CommonHelpers
   include SessionHelpers
   include AppHostHelpers
