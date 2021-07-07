@@ -1,0 +1,107 @@
+FROM debian:10
+LABEL maintainer="Guadaltech Soluciones Tecnologicas <devops@guadaltech.es>"
+
+ARG PHANTOM_JS="phantomjs-1.9.8-linux-x86_64"
+ARG GO="go1.15.1.linux-amd64"
+ARG HOME="/root"
+ARG PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+ENV PATH $HOME/.rbenv/shims:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin:$PATH
+
+ENV PWD_APP='/gobierto' \
+    ENV='development' \
+    HOST='gobierto.test' \
+    BASE_HOST='gobierto.test' \
+    BINDING='0.0.0.0' \
+    ASSETS_COMPILE='true' \
+    RAILS_MAX_THREADS='5'
+
+RUN apt-get update \
+    && apt-get install -y -q \
+        curl \
+        wget \
+        gcc \
+        g++ \
+        make \
+        rsync \
+    && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
+    && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
+    && apt-get update \
+    && apt-get install -y -q \
+        yarn \
+        nodejs \
+        git \
+        zlib1g-dev \
+        autoconf \
+        gcc \
+        g++ \
+        make \
+        bison \
+        libyaml-dev \
+        libreadline-dev \
+        libncurses5-dev \
+        libffi-dev \
+        libgdbm-dev \
+        supervisor \
+        unzip \
+        procps \
+        nano \
+        puma \
+        libpq-dev \
+        libicu-dev \
+        build-essential \
+        chrpath \
+        libssl-dev \
+        libxft-dev \
+        libfreetype6-dev \
+        libfreetype6 \
+        libfontconfig1-dev \
+        libfontconfig1 \
+    && echo "Install PostgreSQL_Client 12" \
+    && wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | apt-key add - \
+    && echo "deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main" >> /etc/apt/sources.list \
+    && apt-get update && apt-get install postgresql-client-12 -y --force-yes --no-install-recommends \
+    && echo "Install PHANTOM_JS: " \
+    && wget https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM_JS.tar.bz2 -O /tmp/${PHANTOM_JS}.tar.bz2 \
+    && tar xvjf /tmp/${PHANTOM_JS}.tar.bz2 -C /usr/local/share/ \
+    && ln -sf /usr/local/share/${PHANTOM_JS}/bin/phantomjs /usr/local/bin\
+    && echo "Version PHANTOM_JS: " \
+    && phantomjs --version \
+    && echo "Install CHROMEDRIVER: " \
+    && wget -N http://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip  -P /tmp/ \
+    && unzip /tmp/chromedriver_linux64.zip -d /tmp/ \
+    && mv -f /tmp/chromedriver /usr/local/share/ \
+    && chmod +x /usr/local/share/chromedriver \
+    && ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver \
+    && ln -s /usr/local/share/chromedriver /usr/bin/chromedriver \
+    && echo "Install RUBY" \
+    && curl -sL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash - \
+    && echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc \
+    && echo 'eval "$(rbenv init -)"' >> ~/.bashrc \
+    && rbenv install 2.7.1 \
+    && rbenv global 2.7.1 \
+    && echo "Version RUBY: " \
+    && ruby -v \
+    && echo "Install GO" \
+    && wget https://golang.org/dl/${GO}.tar.gz -O /tmp/${GO}.tar.gz \
+    && tar -C /usr/local -xzf /tmp/${GO}.tar.gz \
+    && export PATH=$PATH:/usr/local/go/bin \
+    && echo "Version GO: " \
+    && go version \
+    && echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc \
+    && mkdir -p /app /gobierto
+
+ADD ./bin/* /gobierto/bin/
+ADD ./Gemfile /gobierto/
+RUN gem install cocoapods bundle puma rake cap rails i18n-tasks \
+    && bundle install --binstubs=/gobierto/bin --gemfile=/gobierto/Gemfile --path=/gobierto --jobs 2 \
+    && yarn install
+ADD ./docker /docker
+
+WORKDIR /gobierto
+EXPOSE 3000
+VOLUME [ "/gobierto" ]
+ENTRYPOINT [ "/bin/bash","/docker/executable/sh/entrypoint.sh" ]
+
+ONBUILD ADD . /gobierto
+ONBUILD RUN cp -r /gobierto/public /app

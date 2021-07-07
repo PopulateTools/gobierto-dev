@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+
+echo -e "\e[33mExecute Sidekiq\e[39m"
+$PWD_APP/bin/bundle exec $PWD_APP/bin/sidekiq -C config/sidekiq.yml

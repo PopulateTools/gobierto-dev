@@ -84,3 +84,4 @@ app/javascript/packs/custom_fields_table_plugin.js
 # Custom fields plugins
 !vendor/gobierto_engines/custom-fields-*-plugin
 vendor/gobierto_engines/custom-fields-*-plugin/node_modules
+

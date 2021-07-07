@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+
+echo -e "\e[33mExecute Webpack\e[39m"
+if [[ $RAILS_ENV == "production" ]]; then
+    $PWD_APP/bin/webpack -w --verbose --mode production --config /gobierto/config/webpack/production.js
+else
+    $PWD_APP/bin/webpack -w --verbose
+fi

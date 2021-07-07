@@ -1,0 +1,19 @@
+#!/bin/bash
+set -e
+sleep 5
+if [[ $RAILS_ENV == "production" ]]; then
+    while [ ! $(grep -m 1 -o 'admin.js' $PWD_APP/public/packs/manifest.json) ]
+    do
+        sleep 5
+    done
+    echo -e "\e[92mMode Production\e[39m"
+else
+    while [ ! -f $PWD_APP/node_modules/css-loader/index.js ]
+    do
+        sleep 5
+    done
+    echo -e "\e[92mMode Development/Test\e[39m"
+fi
+
+echo -e "\e[92mDeploy Application\e[39m"
+$PWD_APP/bin/rails s -b 0.0.0.0 -p 3000 -e $RAILS_ENV

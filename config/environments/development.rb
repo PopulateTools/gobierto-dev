@@ -18,7 +18,7 @@ Rails.application.configure do
   config.consider_all_requests_local = true
 
   # Host Authorization
-  config.hosts << /[a-z0-9-]+\.gobierto\.test/
+  config.hosts << ENV.fetch("HOST") { "gobierto.test" }
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
@@ -73,7 +73,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: ENV.fetch("MAILCATCHER_HOST") { "localhost" },
-    port: 1025
+    port: ENV.fetch("MAILCATCHER_PORT") { "1025" }
   }
 
   config.action_mailer.default_url_options = {

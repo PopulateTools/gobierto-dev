@@ -1,6 +1,5 @@
-FROM ruby:2.7.1
-MAINTAINER Populate <lets@populate.tools>
+# FROM example public build
+#FROM guadaltech/gobierto-base:latest
 
-RUN apt-get update && apt-get install -y -q nodejs
-
-WORKDIR /app
+# FROM docker-compose build
+FROM gobierto_base:latest

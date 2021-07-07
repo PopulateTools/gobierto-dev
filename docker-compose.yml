@@ -1,103 +1,73 @@
-web:
-  build: .
-  dockerfile: Dockerfile
-  command: ./script/server
-  env_file: .env
-  environment:
-    - RAILS_ENV=development
-    - RACK_ENV=development
-    - DISABLE_SPRING=true
-    - RAILS_LOG_TO_STDOUT=true
-    - PG_HOST=postgres
-    - PG_USERNAME=postgres
-    - ELASTICSEARCH_URL=http://elasticsearch:9200
-    - MAILCATCHER_HOST=mailcatcher
-    - BUNDLE_PATH=/bundle
-    - PYTHONUNBUFFERED=1
-    - REDIS_URL=redis://redis:6379
-  volumes:
-    - .:/app
-  volumes_from:
-    - bundle
-  ports:
-    - "3000:3000"
-  links:
-    - postgres
-    - elasticsearch
-    - mailcatcher
-    - redis
+version: "2"
+services:
+  base:
+    build:
+      context: .
+      dockerfile: Dockerfile-base
+    entrypoint: "bash -c"
+    command: "exit 0"
 
-test:
-  build: .
-  dockerfile: Dockerfile-test
-  command: ./script/test
-  env_file: .env
-  environment:
-    - RAILS_ENV=test
-    - RACK_ENV=test
-    - DISABLE_SPRING=true
-    - RAILS_LOG_TO_STDOUT=true
-    - PG_HOST=postgres
-    - PG_USERNAME=postgres
-    - ELASTICSEARCH_URL=http://elasticsearch:9200
-    - BUNDLE_PATH=/bundle
-    - PYTHONUNBUFFERED=1
-    - REDIS_URL=redis://redis:6379
-  volumes_from:
-    - web
-  links:
-    - postgres
-    - elasticsearch
-    - redis
+  web:
+    depends_on:
+      - base
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ./docker/executable/sh/entrypoint.sh
+    env_file: .env
+    environment:
+      - RAILS_ENV=test
+      - RACK_ENV=test
+      - DISABLE_SPRING=true
+      - RAILS_LOG_TO_STDOUT=true
+      - HOST=gobierto.test
+      - BINDING=0.0.0.0
+      - BASE_HOST=gobierto.test
+      - PG_HOST=postgres
+      - PG_USERNAME=postgres
+      - PG_PASSWORD=postgres
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - MAILCATCHER_HOST=mailcatcher
+      - BUNDLE_PATH=/bundle
+      - RAILS_MAX_THREADS=5
+      - PYTHONUNBUFFERED=1
+      - REDIS_URL=redis://redis:6379
+    volumes_from:
+      - bundle
+    ports:
+      - "3000:3000"
+    links:
+      - postgres
+      - elasticsearch
+      - mailcatcher
+      - redis
 
-sidekiq:
-  image: gobierto_web
-  command: ./script/sidekiq_server
-  env_file: .env
-  environment:
-    - RAILS_ENV=development
-    - RACK_ENV=development
-    - DISABLE_SPRING=true
-    - RAILS_LOG_TO_STDOUT=true
-    - PG_HOST=postgres
-    - PG_USERNAME=postgres
-    - ELASTICSEARCH_URL=http://elasticsearch:9200
-    - MAILCATCHER_HOST=mailcatcher
-    - BUNDLE_PATH=/bundle
-    - PYTHONUNBUFFERED=1
-    - REDIS_URL=redis://redis:6379
-  volumes_from:
-    - web
-  links:
-    - postgres
-    - elasticsearch
-    - mailcatcher
-    - redis
+  bundle:
+    image: busybox
+    volumes:
+      - /bundle
 
-bundle:
-  image: busybox
-  volumes:
-    - /bundle
+  postgres:
+    image: postgres:12
+    env_file: .env
+    ports:
+      - "5432"
 
-postgres:
-  image: postgres:9.6.1
-  ports:
-    - "5432"
+  elasticsearch:
+    build:
+      context: .
+      dockerfile: Dockerfile-elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300"
 
-elasticsearch:
-  build: .
-  dockerfile: Dockerfile-elasticsearch
-  ports:
-    - "9200:9200"
-    - "9300"
+  mailcatcher:
+    image: schickling/mailcatcher
+    ports:
+      - "1025"
+      - "1080:1080"
 
-mailcatcher:
-  image: schickling/mailcatcher
-  ports:
-    - "1025"
-    - "1080:1080"
-
-redis:
-  image: redis:3.0
-  ports:
-    - "6379"
+  redis:
+    image: redis:4.0.9
+    ports:
+      - "6379"

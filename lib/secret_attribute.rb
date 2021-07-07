@@ -9,7 +9,7 @@ class SecretAttribute
   end
 
   def self.digest(value)
-    Digest::SHA1.hexdigest(value + salt)
+    Digest::SHA1.hexdigest("#{value} + #{salt}")
   end
 
   def self.salt

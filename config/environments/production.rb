@@ -25,14 +25,16 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
+  if ENV["RAILS_SERVE_STATIC_FILES"].present?
+    config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
+  end
 
   # Compress JavaScripts and CSS.
   # config.assets.js_compressor = Uglifier.new(harmony: true)
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = ENV.fetch("ASSETS_COMPILE") { "true" }
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
@@ -44,7 +46,9 @@ Rails.application.configure do
   config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = ENV["GOBIERTO_FORCE_SSL"].present?
+  if ENV["GOBIERTO_FORCE_SSL"].present?
+    config.force_ssl = ENV["GOBIERTO_FORCE_SSL"].present?
+  end
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
@@ -87,6 +91,15 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
+
+  app_host = ENV.fetch("HOST") { "gobierto.test" }
+
+  config.action_mailer.default_url_options = {
+    host: app_host,
+    script_name: ""
+  }
+  config.action_mailer.asset_host = "http://#{app_host}"
+  config.action_mailer.perform_deliveries = true
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
