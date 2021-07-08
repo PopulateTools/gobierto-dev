@@ -58,7 +58,7 @@
           </template>
           <div v-if="publicQueries.length">
             <div
-              v-for="{ id, attributes: { sql, name }} in publicQueries"
+              v-for="{ id, attributes: { sql, name, author }} in publicQueries"
               :key="id"
               class="gobierto-data-summary-queries-container"
               @mouseover="showSQLCode(sql)"
@@ -71,6 +71,14 @@
               >
                 {{ name }}
               </router-link>
+
+              <span style="display:block; padding-left:1em; font-size:0.875rem">
+                <i
+                  class="fas fa-user icons-your-queries"
+                  style="color:var(--color-base);"
+                />
+                {{ author }}
+              </span>
             </div>
           </div>
           <template v-else>

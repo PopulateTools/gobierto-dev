@@ -4,10 +4,10 @@ module GobiertoData
   class QuerySerializer < ActiveModel::Serializer
     include Rails.application.routes.url_helpers
 
-    attributes :id
+    attributes :id, :privacy_status, :sql, :dataset_id, :user_id, :author
     attribute :name, unless: :with_translations?
     attribute :name_translations, if: :with_translations?
-    attributes :privacy_status, :sql, :dataset_id, :user_id
+
     belongs_to :dataset, unless: :exclude_relationships?
     belongs_to :user, unless: :exclude_relationships?
     has_many :visualizations, unless: :exclude_relationships?
@@ -18,6 +18,10 @@ module GobiertoData
         data: gobierto_data_api_v1_query_path(id),
         metadata: meta_gobierto_data_api_v1_query_path(id)
       }
+    end
+
+    def author
+      object.user.name
     end
 
     def current_site
