@@ -1,7 +1,0 @@
-madrid_participation_index:
-  markup: "<div class='gradient-bg'>My Template {% show_poll(poll_id: 353021530) %}</div>
-           {% render_partial 'gobierto_participation/welcome/participation_latest_info' %}
-           {% render_partial 'gobierto_participation/welcome/participation_proccesses' %}
-           {% render_partial 'gobierto_participation/welcome/participation_themes_list_a' %}"
-  template: participation_index
-  site: madrid

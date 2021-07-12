@@ -12,6 +12,21 @@ pdf_attachment:
   updated_at: <%= Time.current %>
   collection: site_attachments
 
+pdf_collection_attachment_archived:
+  name: PDF Collection Attachment Archived Name
+  file_size: 10021
+  file_name: pdf-collection-archived-attachment.pdf
+  file_digest: 44036997d456028a88d634afa64037ae3a
+  url: http://host.com/attachments/super-long-and-ugly-aws-id/pdf-collection-archived-attachment.pdf
+  description: Description of a PDF archived attachment
+  current_version: 1
+  site: madrid
+  slug: pdf-collection-archived-attachment-slug
+  collection: site_attachments_archived
+  archived_at: <%= 1.month.ago %>
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
+
 pdf_collection_attachment:
   name: PDF Collection Attachment Name
   file_size: 10022
@@ -22,49 +37,7 @@ pdf_collection_attachment:
   current_version: 1
   site: madrid
   slug: pdf-collection-attachment-slug
-  collection: gender_violence_process_documents
-  created_at: <%= Time.current %>
-  updated_at: <%= Time.current %>
-
-pdf_on_participation:
-  name: PDF Collection On Participation
-  file_size: 10025
-  file_name: pdf-on-participation.pdf
-  file_digest: 44036997d456028a88d634afa64037ae2e
-  url: http://host.com/attachments/super-long-and-ugly-aws-id/pdf-on-participation.pdf
-  description: Description of a Participation PDF attachment
-  current_version: 2
-  site: madrid
-  slug: pdf-on-participation-slug
-  collection: participation_documents
-  created_at: <%= Time.current %>
-  updated_at: <%= Time.current %>
-
-pdf_on_bowling_group_very_active_process:
-  name: PDF Collection On Process
-  file_size: 10025
-  file_name: pdf-on-process.pdf
-  file_digest: 44036997d456028a88d634afa64037ae2e
-  url: http://host.com/attachments/super-long-and-ugly-aws-id/pdf-on-process.pdf
-  description: Description of a Process PDF attachment
-  current_version: 2
-  site: madrid
-  slug: pdf-on-process-slug
-  collection: bowling_group_very_active_documents
-  created_at: <%= Time.current %>
-  updated_at: <%= Time.current %>
-
-pdf_on_cultural_city_group:
-  name: PDF Collection On Draft Process
-  file_size: 10025
-  file_name: pdf-on-draft-process.pdf
-  file_digest: 44036997d456028a88d634afa64037ae2e
-  url: http://host.com/attachments/super-long-and-ugly-aws-id/pdf-on-draft-process.pdf
-  description: Description of a Draft Process PDF attachment
-  current_version: 2
-  site: madrid
-  slug: pdf-on-draft-process-slug
-  collection: cultural_city_group_documents
+  collection: site_attachments
   created_at: <%= Time.current %>
   updated_at: <%= Time.current %>
 
@@ -94,7 +67,7 @@ xlsx_attachment_event:
   slug: xlsx-attachment-event-slug
   created_at: <%= Time.current %>
   updated_at: <%= Time.current %>
-  collection: gender_violence_process_documents
+  collection: site_attachments
 
 attachment:
   name: Attachment Name

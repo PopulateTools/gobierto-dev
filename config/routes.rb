@@ -101,35 +101,6 @@ Rails.application.routes.draw do
         resource :file_attachments, only: [:create]
       end
 
-      namespace :gobierto_participation, as: :participation, path: :participation do
-        get "/" => "welcome#index"
-
-        resources :processes, only: [:index, :new, :edit, :create, :update, :destroy] do
-          put :recover
-          post :update_current_stage
-          resources :process_stages, only: [:create, :destroy, :edit, :index, :new, :update], controller: "processes/process_stages", as: :process_stages, path: :process_stages do
-            resources :pages, only: [:new, :create, :edit, :update], controller: "processes/process_stage_pages", as: :process_stage_page, path: :process_stage_page
-            collection do
-              resource :process_stage_sort, only: [:create], controller: "processes/process_stages_sort", path: :process_stages_sort
-            end
-          end
-          resources :file_attachments, only: [:index], controller: "processes/process_file_attachments", as: :file_attachments, path: :file_attachments
-          resources :events, only: [:index], controller: "processes/process_events", as: :events, path: :events
-          resources :pages, only: [:index], controller: "processes/process_pages", as: :pages, path: :pages
-          resources :polls, only: [:index, :new, :edit, :create, :update, :destroy], controller: "processes/polls" do
-            resources :answers, only: [:index], controller: "processes/poll_answers"
-            put :recover
-          end
-          resources :contribution_containers, only: [:new, :edit, :create, :update, :index, :show, :destroy], controller: "processes/process_contribution_containers", as: :contribution_containers, path: :contribution_containers do
-            put :recover
-          end
-        end
-
-        namespace :configuration do
-          resource :settings, only: [:edit, :update], path: :settings
-        end
-      end
-
       namespace :gobierto_citizens_charters, as: :citizens_charters, path: :citizens_charters do
         get "/" => "services#index"
 
@@ -312,7 +283,6 @@ Rails.application.routes.draw do
           get "terminado", to: "consultations/consultation_confirmations#show", as: :show_confirmation
         end
 
-        resources :consultation_participations, only: [:show], path: "participaciones"
       end
     end
 
@@ -510,50 +480,6 @@ Rails.application.routes.draw do
         get "/pagina/:id"          => "pages#show",    as: :page
         get "/noticias/:id"        => "news#index",    as: :news_index
         get "/noticia/:id"         => "news#show",     as: :news
-      end
-    end
-
-    # Gobierto Participation module
-    namespace :gobierto_participation, path: "participacion" do
-      constraints GobiertoSiteConstraint.new do
-        get "/" => "welcome#index", as: :root
-
-        resources :processes, only: [:index, :show], path: "p" do
-          resources :contribution_containers, only: [:index, :show], controller: "processes/contribution_containers", path: "aportaciones" do
-            resources :contributions, only: [:new, :create, :show], controller: "processes/contributions", path: :contributions do
-              resource :vote, only: [:create, :destroy]
-              resource :flag, only: [:create, :destroy]
-              resource :comment, only: [:create, :index]
-            end
-          end
-
-          resources :polls, only: [:index], controller: "processes/polls", path: "encuestas" do
-            resources :answers, only: [:new, :create], controller: "processes/poll_answers"
-          end
-          resources :attachments, only: [:index], controller: "processes/attachments", path: "documentos"
-          resources :past_process_events, only: [:index], controller: "processes/past_process_events", as: :past_process_events, path: "agendas/eventos-pasados"
-          resources :events, only: [:index, :show], controller: "processes/events", path: "agendas"
-          resources :news, only: [:index], controller: "processes/news", path: "noticias"
-          resources :activities, only: [:index], controller: "processes/activities", path: "actividad"
-        end
-
-        resources :issues, only: [:index, :show], path: "temas" do
-          resources :attachments, only: [:index], controller: "issues/attachments", path: "documentos"
-          resources :events, only: [:index, :show], controller: "issues/events", path: "agendas"
-          resources :activities, only: [:index], controller: "issues/activities", path: "actividad"
-        end
-
-        resources :scopes, only: [:index, :show], path: "ambitos" do
-          resources :attachments, only: [:index], controller: "scopes/attachments", path: "documentos"
-          resources :events, only: [:index, :show], controller: "scopes/events", path: "agendas"
-          resources :activities, only: [:index], controller: "scopes/activities", path: "actividad"
-        end
-
-        resources :attachments, only: [:index], controller: "attachments", path: "documentos"
-        resources :past_participation_events, only: [:index], controller: "past_participation_events", as: :past_participation_events, path: "agendas/eventos-pasados"
-        resources :events, only: [:index, :show], controller: "events", path: "agendas"
-        resources :news, only: [:index], controller: "news", path: "noticias"
-        resources :activities, only: [:index], controller: "activities", path: "actividad"
       end
     end
 

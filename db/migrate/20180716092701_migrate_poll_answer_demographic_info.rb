@@ -7,20 +7,24 @@ class MigratePollAnswerDemographicInfo < ActiveRecord::Migration[5.2]
   end
 
   def up
-    poll_answer_class.reset_column_information
+    if defined? GobiertoParticipation::PollAnswer
+      poll_answer_class.reset_column_information
 
-    User.all.each do |user|
-      poll_answer_class.by_user(user).each do |answer|
-        answer.update_attribute(
-          :encrypted_meta,
-          SecretAttribute.encrypt(poll_answer_meta(user, answer))
-        )
+      User.all.each do |user|
+        poll_answer_class.by_user(user).each do |answer|
+          answer.update_attribute(
+            :encrypted_meta,
+            SecretAttribute.encrypt(poll_answer_meta(user, answer))
+          )
+        end
       end
     end
   end
 
   def down
-    poll_answer_class.update_all(encrypted_meta: nil)
+    if defined? GobiertoParticipation::PollAnswer
+      poll_answer_class.update_all(encrypted_meta: nil)
+    end
   end
 
   private

@@ -99,64 +99,34 @@ themes_draft_on_scope:
 
 # notice_1
 
-notice_1_on_process:
-  collection: gender_violence_process_news
-  item_id: <%= ActiveRecord::FixtureSet.identify(:notice_1) %>
-  item_type: 'GobiertoCms::News'
-  container: gender_violence_process (GobiertoParticipation::Process)
-
 notice_1_on_site:
-  collection: gender_violence_process_news
+  collection: site_attachments
   item: notice_1
   item_type: 'GobiertoCms::News'
   container: madrid (Site)
 
-notice_1_on_participation:
-  collection: gender_violence_process_news
-  item: notice_1
-  item_type: 'GobiertoCms::News'
-  container_type: GobiertoParticipation
-
 notice_1_on_issue:
-  collection: gender_violence_process_news
+  collection: site_attachments
   item: notice_1
   item_type: 'GobiertoCms::News'
   container: women_term (GobiertoCommon::Term)
 
 notice_1_on_scope:
-  collection: gender_violence_process_news
+  collection: site_attachments
   item: notice_1
   item_type: 'GobiertoCms::News'
   container: old_town_term (GobiertoCommon::Term)
 
 # notice_2
 
-notice_2_on_site:
-  collection: gender_violence_process_news
-  item_id: <%= ActiveRecord::FixtureSet.identify(:notice_2) %>
-  item_type: 'GobiertoCms::News'
-  container: gender_violence_process (GobiertoParticipation::Process)
-
-notice_2_on_process:
-  collection: gender_violence_process_news
-  item: notice_2
-  item_type: 'GobiertoCms::News'
-  container: gender_violence_process (GobiertoParticipation::Process)
-
-notice_2_on_participation:
-  collection: gender_violence_process_news
-  item: notice_2
-  item_type: 'GobiertoCms::News'
-  container_type: GobiertoParticipation
-
 notice_2_on_issue:
-  collection: gender_violence_process_news
+  collection: site_attachments_archived
   item: notice_2
   item_type: 'GobiertoCms::News'
   container: women_term (GobiertoCommon::Term)
 
 notice_2_on_scope:
-  collection: gender_violence_process_news
+  collection: site_attachments_archived
   item: notice_2
   item_type: 'GobiertoCms::News'
   container: old_town_term (GobiertoCommon::Term)

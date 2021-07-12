@@ -1,15 +1,11 @@
 <nav class="nav main-nav" role="navigation" aria-hidden="false">
   <div class="column">
-    <% if try(:current_process).nil? %>
-      <% if global_navigation_section? %>
-        <%= render "layouts/global_navigation", { show_active: true } %>
-      <% else %>
-        <% current_site.configuration.modules_with_frontend_enabled.each do |site_module| %>
-          <%= render_if_exists "#{site_module.underscore}/layouts/navigation.main", { show_active: true } %>
-        <% end %>
-      <% end %>
+    <% if global_navigation_section? %>
+      <%= render "layouts/global_navigation", { show_active: true } %>
     <% else %>
-      <%= render "gobierto_participation/layouts/process_breadcrumb" %>
+      <% current_site.configuration.modules_with_frontend_enabled.each do |site_module| %>
+        <%= render_if_exists "#{site_module.underscore}/layouts/navigation.main", { show_active: true } %>
+      <% end %>
     <% end %>
   </div>
 </nav>

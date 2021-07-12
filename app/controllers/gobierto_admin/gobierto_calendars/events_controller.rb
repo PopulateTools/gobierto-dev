@@ -95,11 +95,7 @@ module GobiertoAdmin
         @event.destroy
         process = find_process if params[:process_id]
 
-        if process
-          redirect_to admin_participation_process_events_path(process_id: process), notice: t(".success")
-        else
-          redirect_to admin_common_collection_path(@event.collection), notice: t(".success")
-        end
+        redirect_to admin_common_collection_path(@event.collection), notice: t(".success")
       end
 
       def recover
@@ -108,11 +104,7 @@ module GobiertoAdmin
 
         process = find_process if params[:process_id]
 
-        if process
-          redirect_to admin_participation_process_events_path(process_id: process), notice: t(".success")
-        else
-          redirect_to admin_common_collection_path(@event.collection), notice: t(".success")
-        end
+        redirect_to admin_common_collection_path(@event.collection), notice: t(".success")
       end
 
       private

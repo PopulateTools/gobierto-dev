@@ -16,7 +16,7 @@ class Subscribers::GobiertoCommonCollectionActivityTest < ActiveSupport::TestCas
   end
 
   def collection
-    @collection ||= gobierto_common_collections(:news)
+    @collection ||= gobierto_common_collections(:site_news)
   end
 
   def admin

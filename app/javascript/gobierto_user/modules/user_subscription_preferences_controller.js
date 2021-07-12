@@ -5,12 +5,11 @@ window.User.SubscriptionPreferencesController = (function() {
     _handleSiteSelected();
     _handleAreaSelected('gobierto_budget_consultations');
     _handleAreaSelected('gobierto_people');
-    _handleAreaSelected('gobierto_participation');
   };
 
   function _handleSiteSelected(){
     $('#user_subscription_preferences_site_to_subscribe').on('change', function(){
-      if($(this).is(':checked') === false){
+      if ($(this).is(':checked') === false){
         _uncheckAllModuleOptions();
       } else {
 
@@ -21,7 +20,7 @@ window.User.SubscriptionPreferencesController = (function() {
 
   function _handleAreaSelected(area_name){
     $('#user_subscription_preferences_modules_'.concat(area_name)).on('change', function(){
-      if($(this).is(':checked') === false){
+      if ($(this).is(':checked') === false){
         _uncheckAllAreaOptions(area_name);
       } else {
         _checkAllAreaOptions(area_name);
@@ -40,7 +39,7 @@ window.User.SubscriptionPreferencesController = (function() {
   function _uncheckAllModuleOptions(){
     $('#modules_selection input[data-selected]').each(function(){
       $(this).prop('disabled', false);
-      if($(this).data('selected') === false){
+      if ($(this).data('selected') === false){
         $(this).prop('checked', null);
         _uncheckAllAreaOptions($(this).data('area'))
       }
@@ -57,7 +56,7 @@ window.User.SubscriptionPreferencesController = (function() {
   function _uncheckAllAreaOptions(area_name){
     $('#area_'.concat(area_name, ' input[data-selected]')).each(function(){
       $(this).prop('disabled', false);
-      if($(this).data('selected') === false){
+      if ($(this).data('selected') === false){
         $(this).prop('checked', null);
       }
     });

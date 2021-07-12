@@ -41,13 +41,15 @@
     </div>
 
     <table>
-      <tr>
-        <th></th>
-        <th><%= t(".header.collection") %></th>
-        <th><%= t(".header.file_attachments") %></th>
-        <th></th>
-        <th></th>
-      </tr>
+      <thead>
+        <tr>
+          <th></th>
+          <th><%= t(".header.collection") %></th>
+          <th><%= t(".header.file_attachments") %></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
 
       <tbody id="file_attachments_in_collection">
         <% @collections.each do |collection| %>
@@ -80,12 +82,14 @@
 </div>
 
 <table class="pages-list">
-  <tr>
-    <th></th>
-    <th><%= GobiertoCms::Page.human_attribute_name(:title) %></th>
-    <th><%= t('.created_at') %></th>
-    <th><%= t('.updated_at') %></th>
-  </tr>
+  <thead>
+    <tr>
+      <th></th>
+      <th><%= GobiertoCms::Page.human_attribute_name(:title) %></th>
+      <th><%= t('.created_at') %></th>
+      <th><%= t('.updated_at') %></th>
+    </tr>
+  </thead>
 
   <tbody>
     <% @site_file_attachments.each do |file_attachment| %>

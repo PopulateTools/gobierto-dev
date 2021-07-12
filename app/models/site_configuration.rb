@@ -23,8 +23,8 @@ class SiteConfiguration
   ].freeze
 
   DEFAULT_LOGO_PATH = "sites/logo-default.png"
-  MODULES_WITH_NOTIFICATONS = %w(GobiertoPeople GobiertoBudgetConsultations GobiertoParticipation).freeze
-  MODULES_WITH_COLLECTIONS = %w(GobiertoParticipation GobiertoData).freeze
+  MODULES_WITH_NOTIFICATONS = %w(GobiertoPeople GobiertoBudgetConsultations).freeze
+  MODULES_WITH_COLLECTIONS = %w(GobiertoData).freeze
 
   attr_accessor *PROPERTIES
 

@@ -28,7 +28,7 @@ module GobiertoAdmin
       end
 
       def vocabulary_used_in_other_context
-        @vocabulary_used_in_other_context ||= gobierto_common_vocabularies(:issues_vocabulary)
+        @vocabulary_used_in_other_context ||= gobierto_common_vocabularies(:madrid_political_groups_vocabulary)
       end
 
       def statuses_vocabulary
@@ -100,7 +100,7 @@ module GobiertoAdmin
             click_link "Delete projects of this plan"
 
             assert has_alert?(/The term \".*\" of \"#{vocabulary_used_in_other_context.name}\" vocabulary can't be deleted/)
-            assert has_alert? "GobiertoParticipation::Process: Attribute issue_id on instances with ids"
+            assert has_alert? "GobiertoPeople::Person: Attribute political_group_id on instances with ids"
           end
         end
       end

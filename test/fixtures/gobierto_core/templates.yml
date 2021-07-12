@@ -1,4 +1,2 @@
-participation_index:
-  template_path: gobierto_participation/welcome/index
 application_layout:
   template_path: layouts/application

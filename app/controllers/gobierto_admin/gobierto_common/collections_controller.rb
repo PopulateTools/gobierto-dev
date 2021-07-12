@@ -120,7 +120,7 @@ module GobiertoAdmin
       end
 
       def container_items
-        [current_site, current_site.people, current_site.processes].flatten
+        [current_site, current_site.people].flatten
       end
 
       def find_containers
@@ -147,19 +147,9 @@ module GobiertoAdmin
 
       def redirect_to_custom_show
         case @collection.item_type
-        when "GobiertoCms::News"
-          if @collection.container.is_a?(::GobiertoParticipation::Process)
-            redirect_to admin_participation_process_pages_path(@collection.container) and return false
-          end
-        when "GobiertoAttachments::Attachment"
-          if @collection.container.is_a?(::GobiertoParticipation::Process)
-            redirect_to admin_participation_process_file_attachments_path(@collection.container) and return false
-          end
         when "GobiertoCalendars::Event"
           if @collection.container.is_a?(::GobiertoPeople::Person)
             redirect_to admin_calendars_events_path(collection_id: @collection.id) and return false
-          elsif @collection.container.is_a?(::GobiertoParticipation::Process)
-            redirect_to admin_participation_process_events_path(@collection.container) and return false
           end
         end
       end

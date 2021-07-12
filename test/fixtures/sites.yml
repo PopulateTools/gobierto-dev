@@ -10,7 +10,6 @@ madrid:
       "GobiertoBudgetConsultations",
       "GobiertoPeople",
       "GobiertoCms",
-      "GobiertoParticipation",
       "GobiertoIndicators",
       "GobiertoPlans",
       "GobiertoCitizensCharters",
@@ -22,7 +21,7 @@ madrid:
     ],
     "default_locale" => "en",
     "available_locales" => ["en", "es"],
-    "home_page" => "GobiertoParticipation",
+    "home_page" => "GobiertoBudgets",
     "privacy_page_id" => "58988811",
     "raw_configuration_variables" => "allowed_iframe_origin\: \"https://populate.tools\"",
     "google_analytics_id" => "UA-000000-01" }.to_yaml.inspect %>
@@ -87,10 +86,10 @@ cortegada:
   configuration_data: <%= {
     "links_markup" => %Q{<a href="http://www.cortegada.es">Ayuntamiento de Cortegada</a>},
     "logo" => "http://www.cortegada.es/imagenes/Principal/logo_principal.PNG",
-    "modules" => ["GobiertoBudgets", "GobiertoParticipation"],
+    "modules" => ["GobiertoBudgets"],
     "default_locale" => "en",
     "available_locales" => ["en", "es"],
-    "home_page" => "GobiertoParticipation",
+    "home_page" => "GobiertoBudgets",
     "google_analytics_id" => "UA-000000-04",
     "auth_modules" => ["null_strategy"] }.to_yaml.inspect %>
   organization_name: Cortegada

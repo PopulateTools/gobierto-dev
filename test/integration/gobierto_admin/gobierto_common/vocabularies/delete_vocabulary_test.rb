@@ -29,7 +29,7 @@ module GobiertoCommon
         end
 
         def vocabulary_with_associated_items
-          @vocabulary_with_associated_items ||= gobierto_common_vocabularies(:issues_vocabulary)
+          @vocabulary_with_associated_items ||= gobierto_common_vocabularies(:madrid_political_groups_vocabulary)
         end
 
         def test_permissions

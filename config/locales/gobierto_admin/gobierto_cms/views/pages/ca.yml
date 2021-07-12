@@ -4,7 +4,6 @@ ca:
     gobierto_cms:
       pages:
         edit:
-          back_to_process_stages: "< Tornar a l'edició de fases"
           title: Editar pàgina
         form:
           include_in_section: Incloure a la secció

@@ -8,7 +8,7 @@ module GobiertoAdmin
     module FileAttachmentFormTests
       class CreateTest < BaseTest
         def collection
-          @collection ||= gobierto_common_collections(:files)
+          @collection ||= gobierto_common_collections(:site_attachments_cortegada)
         end
 
         def file_attachment_attributes

@@ -42,13 +42,6 @@ module GobiertoCommon
         ")
       end
 
-      def container_path
-        case
-        when self.class == GobiertoParticipation::Process
-          self.class.url_helpers.gobierto_participation_process_path(self.slug)
-        end
-      end
-
       def news_collection
         @news_collection ||= GobiertoCommon::Collection.find_by(container: self, item_type: 'GobiertoCms::News')
       end
@@ -57,12 +50,6 @@ module GobiertoCommon
         @events_collection ||= GobiertoCommon::Collection.find_by(container: self, item_type: 'GobiertoCalendars::Event')
       end
 
-    end
-
-    def self.container_klass_for
-      {
-        GobiertoParticipation::Process.container_type_name => GobiertoParticipation::Process
-      }
     end
 
     private

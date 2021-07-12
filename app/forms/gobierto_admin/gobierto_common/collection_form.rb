@@ -52,12 +52,7 @@ module GobiertoAdmin
           collection_attributes.site_id = site_id
           collection_attributes.title_translations = title_translations
           collection_attributes.slug = slug
-          if container
-            collection_attributes.container = container
-          else
-            collection_attributes.container_type = "GobiertoParticipation"
-            collection_attributes.container_id = nil
-          end
+          collection_attributes.container = container
           collection_attributes.item_type = item_type
         end
 

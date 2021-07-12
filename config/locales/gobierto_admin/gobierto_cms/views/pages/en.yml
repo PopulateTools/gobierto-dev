@@ -4,7 +4,6 @@ en:
     gobierto_cms:
       pages:
         edit:
-          back_to_process_stages: "< Back to process stages"
           title: Edit page
         form:
           include_in_section: Include in section

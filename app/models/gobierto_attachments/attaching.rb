@@ -34,7 +34,7 @@ module GobiertoAttachments
                               container_id: attachable.collection.container_id,
                               item_type: attachment.class.name,
                               slug: "attachment-#{attachable.collection.slug}",
-                              title: I18n.t("gobierto_participation.shared.documents")
+                              title: "" #FIXME
     end
   end
 end

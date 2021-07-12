@@ -1,7 +1,18 @@
+page_gobierto_cms_with_section:
+  title_translations: <%= { 'en' => 'CMS Page', 'es' => 'Página del CMS' }.to_json %>
+  body_translations: <%= { 'en' => 'body of page', 'es' => 'cuerpo de la pagina' }.to_json %>
+  body_source_translations: <%= { 'en' => 'body source page', 'es' => 'cuerpo fuente de la pagina' }.to_json %>
+  slug: 'cms-page'
+  visibility_level: <%= GobiertoCms::Page.visibility_levels[:active] %>
+  site: madrid
+  collection: site_news
+  published_on: <%= Date.current %>
+  template:
+
 site_news_1:
   title_translations: <%= { 'en' => 'Site news 1', 'es' => 'Noticias sitio 1' }.to_json %>
-  body_translations: <%= { 'en' => 'Site news 1', 'es' => 'Noticias sitio 1' }.to_json %>
-  body_source_translations: <%= { 'en' => 'Site news 1', 'es' => 'Noticias sitio 1' }.to_json %>
+  body_translations: <%= { 'en' => 'body site news 1', 'es' => 'cuerpo noticias sitio 1' }.to_json %>
+  body_source_translations: <%= { 'en' => 'body source site news 1', 'es' => 'cuerpo fuente noticias sitio 1' }.to_json %>
   slug: 'site-news-1'
   visibility_level: <%= GobiertoCms::Page.visibility_levels[:active] %>
   site: madrid
@@ -41,28 +52,6 @@ cookies:
   published_on: <%= Date.current %>
   template:
 
-themes:
-  title_translations: <%= {'en' => 'Themes in the site', 'es' => 'Temas en el sitio' }.to_json %>
-  body_translations: <%= {'en' => 'These are the themes', 'es' => 'Estos son los temas' }.to_json %>
-  body_source_translations: <%= {'en' => 'These are the themes', 'es' => 'Estos son los temas' }.to_json %>
-  slug: 'themes'
-  visibility_level: <%= GobiertoCms::Page.visibility_levels[:active] %>
-  site: madrid
-  collection: news
-  published_on: <%= Date.current %>
-  template:
-
-themes_draft:
-  title_translations: <%= {'en' => 'Themes draft', 'es' => 'Borrador de temas' }.to_json %>
-  body_translations: <%= {'en' => 'These are the themes (draft)', 'es' => 'Estos son los temas(borrador)' }.to_json %>
-  body_source_translations: <%= {'en' => 'These are the themes (draft)', 'es' => 'Estos son los temas(borrador)' }.to_json %>
-  slug: 'themes-draft'
-  visibility_level: <%= GobiertoCms::Page.visibility_levels[:draft] %>
-  site: madrid
-  collection: news
-  published_on: <%= Date.current %>
-  template:
-
 notice_1:
   title_translations: <%= {'en' => 'Notice 1 title', 'es' => 'Título de la noticia 1' }.to_json %>
   body_translations: <%= {'en' => 'Notice 1 <strong>body</strong>', 'es' => '<strong>Cuerpo</strong> de la noticia 1' }.to_json %>
@@ -70,7 +59,7 @@ notice_1:
   slug: 'notice-1'
   visibility_level: <%= GobiertoCms::Page.visibility_levels[:active] %>
   site: madrid
-  collection: gender_violence_process_news
+  collection: site_attachments
   published_on: <%= Date.current %>
   template:
 
@@ -81,7 +70,7 @@ notice_2:
   slug: 'notice-2'
   visibility_level: <%= GobiertoCms::Page.visibility_levels[:active] %>
   site: madrid
-  collection: gender_violence_process_news
+  collection: site_attachments
   published_on: <%= Date.current %>
   template:
 
@@ -96,47 +85,7 @@ about_site:
     "es" => "Esto es el **cuerpo** de la página que contiene una imagen:\r\n\r\n![La imagen](#{Rails.application.routes.url_helpers.gobierto_attachments_attachment_url(ActiveRecord::FixtureSet.identify(:png_attachment_uploaded), host: 'madrid.gobierto.test')})\r\n\r\n y un [enlace a un doc](#{Rails.application.routes.url_helpers.gobierto_attachments_attachment_url(ActiveRecord::FixtureSet.identify(:pdf_attachment_uploaded), host: 'madrid.gobierto.test')})."
   }.to_json %>
   slug: 'about-site'
-  visibility_level: <%= GobiertoCms::Page.visibility_levels[:active] %>
-  site: madrid
-  collection: site_pages
-  published_on: <%= Date.current %>
-  template:
-
-about_participation:
-  title_translations: <%= {
-    'en' => 'About participation',
-    'es' => 'Acerca de participación'
-  }.to_json %>
-  body_translations: <%= {
-    "en" => "<p>About participation description\r\n {% list_children_pages about-participation %}</p>\r\n",
-    "es" => "<p>Acerca de participación (descripción):\r\n {% list_children_pages about-participation %}</p>\r\n"
-  }.to_json %>
-  body_source_translations: <%= {
-    "en" => "About participation description\r\n {% list_children_pages about-participation %}",
-    "es" => "cerca de participación (descripción):\r\n {% list_children_pages about-participation %}"
-  }.to_json %>
-  slug: 'about-participation'
-  visibility_level: <%= GobiertoCms::Page.visibility_levels[:active] %>
-  site: madrid
-  collection: site_pages
-  published_on: <%= Date.current %>
-  template:
-
-about_participation_details:
-  title_translations: <%= {
-    'en' => 'About participation details',
-    'es' => 'Detalles sobre participación'
-  }.to_json %>
-  body_translations: <%= {
-    'en' => 'About participation details',
-    'es' => 'Detalles sobre participación'
-  }.to_json %>
-  body_source_translations: <%= {
-    'en' => 'About participation details',
-    'es' => 'Detalles sobre participación'
-  }.to_json %>
-  slug: 'about-participation-details'
-  visibility_level: <%= GobiertoCms::Page.visibility_levels[:active] %>
+  visibility_level: <%= GobiertoCms::Page.visibility_levels[:draft] %>
   site: madrid
   collection: site_pages
   published_on: <%= Date.current %>

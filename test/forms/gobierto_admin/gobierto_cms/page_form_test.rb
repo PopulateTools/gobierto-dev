@@ -44,7 +44,7 @@ module GobiertoAdmin
       end
 
       def collection
-        @collection ||= gobierto_common_collections(:gender_violence_process_news)
+        @collection ||= gobierto_common_collections(:site_news)
       end
 
       def test_save_with_valid_attributes

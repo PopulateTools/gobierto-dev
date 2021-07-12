@@ -9,7 +9,6 @@ class User::SubscriptionPreferencesForm < BaseForm
     :modules,
     :gobierto_people_people,
     :gobierto_budget_consultations_consultations,
-    :gobierto_participation_processes,
     :site_to_subscribe
   )
 
@@ -47,7 +46,6 @@ class User::SubscriptionPreferencesForm < BaseForm
         update_subscriptions_to_modules
         update_subscriptions_to_people(gobierto_people_people)
         update_subscriptions_to_consultations(gobierto_budget_consultations_consultations)
-        update_subscriptions_to_participation
       end
 
       @user
@@ -110,15 +108,6 @@ class User::SubscriptionPreferencesForm < BaseForm
 
       consultation = site.budget_consultations.find(consultation_id)
       @user.unsubscribe_from!(consultation, site)
-    end
-  end
-
-  def update_subscriptions_to_participation
-    return if broader_level_subscription_to?(GobiertoParticipation::Process.new)
-    return if gobierto_participation_processes.nil?
-
-    site.processes.active.each do |process|
-      gobierto_participation_processes.include?(process.id.to_s) ? user.subscribe_to!(process, site) : user.unsubscribe_from!(process, site)
     end
   end
 

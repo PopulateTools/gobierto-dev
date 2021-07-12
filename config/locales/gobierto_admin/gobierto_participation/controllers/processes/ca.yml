@@ -1,9 +1,0 @@
----
-ca:
-  gobierto_admin:
-    gobierto_participation:
-      configuration:
-        settings:
-          update:
-            error: Hi ha hagut un error al desar la configuració
-            success: Configuració guardada correctament

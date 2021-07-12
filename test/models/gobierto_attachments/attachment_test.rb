@@ -18,10 +18,6 @@ module GobiertoAttachments
       @pdf_attachment ||= gobierto_attachments_attachments(:pdf_attachment)
     end
 
-    def process_attachment
-      @process_attachment ||= gobierto_attachments_attachments(:pdf_collection_attachment)
-    end
-
     def xlsx_attachment
       @xlsx_attachment ||= gobierto_attachments_attachments(:xlsx_attachment)
     end
@@ -64,10 +60,6 @@ module GobiertoAttachments
 
     def file_digest(file)
       Attachment.file_digest(file)
-    end
-
-    def process
-      @process ||= gobierto_participation_processes(:gender_violence_process)
     end
 
     def test_valid
@@ -167,12 +159,5 @@ module GobiertoAttachments
       assert_equal expected_url, attachment.to_url
     end
 
-    def test_public?
-      assert process_attachment.public?
-
-      process.draft!
-
-      refute process_attachment.public?
-    end
   end
 end

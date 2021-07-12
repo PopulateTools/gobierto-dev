@@ -17,8 +17,6 @@ class TermTest < ActiveSupport::TestCase
 
   def terms_with_dependencies
     @terms_with_dependencies ||= {
-      issue: gobierto_common_terms(:culture_term),
-      scope: gobierto_common_terms(:center_term),
       political_group: gobierto_common_terms(:marvel_term)
     }
   end

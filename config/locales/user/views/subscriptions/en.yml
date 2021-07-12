@@ -10,7 +10,6 @@ en:
           gobierto_budget_consultations: Budgets consultations
           gobierto_budgets: Budgets
           gobierto_observatory: Observatory
-          gobierto_participation: Participation
           gobierto_people: People
         notification_frequency:
           daily: Daily digest
@@ -19,7 +18,6 @@ en:
           immediate: Inmediate
           submit: Save
           weekly: Weekly digest
-        participation: Participation
         people: People
         submit: Save
         title: Your alerts

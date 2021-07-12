@@ -1,56 +1,36 @@
 # pdf_collection_attachment
 
-pdf_collection_attachment_on_process:
-  collection: gender_violence_process_documents
-  item: pdf_collection_attachment (GobiertoAttachments::Attachment)
-  container: gender_violence_process (GobiertoParticipation::Process)
-
 pdf_collection_attachment_on_site:
   collection: files
   item: pdf_collection_attachment (GobiertoAttachments::Attachment)
   item_type: 'GobiertoAttachments::Attachment'
   container: madrid (Site)
 
-pdf_collection_attachment_on_participation_on_participation:
-  collection: gender_violence_process_documents
-  item: pdf_collection_attachment (GobiertoAttachments::Attachment)
-  container_type: GobiertoParticipation
-
 collection_item_attachment_on_issue:
-  collection: gender_violence_process_documents
+  collection: site_attachments
   item: pdf_collection_attachment (GobiertoAttachments::Attachment)
   container: women_term (GobiertoCommon::Term)
 
 collection_item_attachment_on_scope:
-  collection: gender_violence_process_documents
+  collection: site_attachments
   item: pdf_collection_attachment (GobiertoAttachments::Attachment)
   container: old_town_term (GobiertoCommon::Term)
 
 # xlsx_attachment_event
 
-xlsx_attachment_event_on_process:
-  collection: gender_violence_process_documents
-  item: xlsx_attachment_event (GobiertoAttachments::Attachment)
-  container: gender_violence_process (GobiertoParticipation::Process)
-
 xlsx_attachment_event_on_site:
-  collection: gender_violence_process_documents
+  collection: site_attachments
   item: xlsx_attachment_event
   item_type: 'GobiertoAttachments::Attachment'
   container: madrid (Site)
 
-xlsx_attachment_event_on_participation:
-  collection: gender_violence_process_documents
-  item: xlsx_attachment_event (GobiertoAttachments::Attachment)
-  container_type: GobiertoParticipation
-
 xlsx_attachment_event_on_issue:
-  collection: gender_violence_process_documents
+  collection: site_attachments
   item: xlsx_attachment_event (GobiertoAttachments::Attachment)
   container: women_term (GobiertoCommon::Term)
 
 xlsx_attachment_event_on_scope:
-  collection: gender_violence_process_documents
+  collection: site_attachments
   item: xlsx_attachment_event (GobiertoAttachments::Attachment)
   container: old_town_term (GobiertoCommon::Term)
 
@@ -60,8 +40,3 @@ pdf_on_participation_on_site:
   collection: participation_documents
   item: pdf_on_participation (GobiertoAttachments::Attachment)
   container: madrid (Site)
-
-pdf_on_participation_on_participation:
-  collection: participation_documents
-  item: pdf_on_participation (GobiertoAttachments::Attachment)
-  container_type: GobiertoParticipation

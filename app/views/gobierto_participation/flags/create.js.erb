@@ -1,3 +1,0 @@
-<% if @flag %>
-  $("#flag-link-<%= @flag.flaggable.id %>").html("<%= j render(partial: 'gobierto_participation/processes/contributions/flag', locals: { item: @flag.flaggable, disabled: false }) %>");
-<% end %>

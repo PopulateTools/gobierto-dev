@@ -39,7 +39,6 @@ module GobiertoCms
 
     belongs_to :site, touch: true
     has_many :collection_items, as: :item
-    has_many :process_stage_pages, class_name: "GobiertoParticipation::ProcessStagePage"
 
     after_create :add_item_to_collection
     after_restore :set_slug
@@ -79,10 +78,6 @@ module GobiertoCms
 
     def public?
       active? && public_parent?
-    end
-
-    def destroyable?
-      process_stage_pages.empty?
     end
 
     def parameterize

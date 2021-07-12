@@ -96,24 +96,6 @@
             </div>
           <% end %>
 
-          <% if current_site.configuration.available_module?("GobiertoParticipation") && current_site.configuration.gobierto_participation_enabled? && @user_notification_gobierto_participation_processes.any? %>
-            <% mod_name = "gobierto_participation"
-               disabled = site_subscription || @user_subscription_preferences_form.module_level_subscriptions.include?(mod_name) %>
-            <h3><%= t('.participation') %></h3>
-            <div class="form_item" id="<%= "area_#{mod_name}" %>">
-              <div class="options compact">
-                <%= f.collection_check_boxes(:gobierto_participation_processes, @user_notification_gobierto_participation_processes, :id, :title) do |b| %>
-                  <div class="option ">
-                    <%= b.check_box({"disabled" => disabled, "data-selected" => f.object.specific_subscriptions.include?(b.object)}) %>
-                    <%= b.label do %>
-                      <span></span>
-                      <%= b.text %>
-                    <% end %>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
         </div>
       </div>
     </div>

@@ -31,14 +31,6 @@ module GobiertoCommon
         @term ||= gobierto_common_terms(:sports_term)
       end
 
-      def term_with_associated_items
-        @term_with_associated_items ||= gobierto_common_terms(:culture_term)
-      end
-
-      def term_associated_process
-        @term_associated_process ||= gobierto_participation_processes(:dance_studio_group_ended)
-      end
-
       def plan_vocabulary
         @plan_vocabulary ||= gobierto_common_vocabularies(:plan_categories_vocabulary)
       end
@@ -81,24 +73,6 @@ module GobiertoCommon
             assert has_message?("Term deleted successfully.")
 
             refute vocabulary.terms.exists?(id: term.id)
-          end
-        end
-      end
-
-      def test_delete_term_with_associated_items
-        with_signed_in_admin(admin) do
-          with_current_site(site) do
-            visit @path
-
-            within("#v_el_actions_#{term_with_associated_items.id}", visible: false) do
-              click_link "Delete", visible: false
-            end
-
-            assert has_message?("The term couldn't be deleted")
-            assert has_message?("GobiertoParticipation::Process: Attribute issue_id on instances with ids")
-            assert has_message?(term_associated_process.id)
-
-            assert vocabulary.terms.exists?(id: term_with_associated_items.id)
           end
         end
       end

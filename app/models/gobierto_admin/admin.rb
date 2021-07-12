@@ -26,12 +26,11 @@ module GobiertoAdmin
     has_many :gobierto_plans_permissions, through: :admin_groups, class_name: "Permission::GobiertoPlans", source: :permissions
     has_many :gobierto_plans_projects, class_name: "::GobiertoPlans::Node", dependent: :nullify
     has_many :gobierto_observatory_permissions, through: :admin_groups, class_name: "Permission::GobiertoObservatory", source: :permissions
-    has_many :gobierto_participation_permissions, through: :admin_groups, class_name: "Permission::GobiertoParticipation", source: :permissions
     has_many :gobierto_citizens_charters_permissions, through: :admin_groups, class_name: "Permission::GobiertoCitizensCharters", source: :permissions
     has_many :gobierto_investments_permissions, through: :admin_groups, class_name: "Permission::GobiertoInvestments", source: :permissions
     has_many :gobierto_data_permissions, through: :admin_groups, class_name: "Permission::GobiertoData", source: :permissions
     has_many :gobierto_visualizations_permissions, through: :admin_groups, class_name: "Permission::GobiertoVisualizations", source: :permissions
-    has_many :contribution_containers, dependent: :destroy, class_name: "GobiertoParticipation::ContributionContainer"
+
 
     has_many :api_tokens, dependent: :destroy, class_name: "GobiertoAdmin::ApiToken"
 

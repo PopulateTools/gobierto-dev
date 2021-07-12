@@ -35,7 +35,7 @@ module GobiertoAdmin
         organization_id: "1",
         domain: "test2.gobierto.test",
         visibility_level: "active",
-        home_page: "GobiertoParticipation"
+        home_page: "GobiertoBudgets"
       }
     end
 

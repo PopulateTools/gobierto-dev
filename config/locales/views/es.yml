@@ -102,7 +102,6 @@ es:
       budget_line_item_income: Partida presupuestaria - Ingreso
       charter: Carta de servicios
       charter_commitment: Carta de servicios - Indicador
-      contribution_item: Aportaciones
       dataset_item: Datos
       drag_drop_instructions: Arrastre y suelte en la parte izquierda para colocar
         esta página en el menú
@@ -114,7 +113,6 @@ es:
       person_post_item: Post
       person_statement_item: Declaración
       plan_project_item: Plan - Actuación
-      process_item: Proceso
       updated: Actualizado
   scopes:
     events:
@@ -137,10 +135,6 @@ es:
       update: Actualizar
     poll_question:
       multiple_choice_msg: Puede elegir varias opciones
-    poll_teaser:
-      answer: Responder
-      next_question: Siguiente pregunta
-      submit: Enviar
     polls:
       no_unanswered_polls: No hay encuestas pendientes de contestar.
       opinion: Opine
@@ -157,7 +151,6 @@ es:
   views:
     delete: Eliminar
     delete_confirm: "¿Seguro? Esta operación no tiene marcha atrás."
-    drag_to_sort: Arrastre para ordenar
     edit: Edita
     forms:
       max_characters: Máx. %{length} caracteres

@@ -20,11 +20,11 @@ module GobiertoAdmin
       end
 
       def cms_page
-        @cms_page ||= gobierto_cms_pages(:themes)
+        @cms_page ||= gobierto_cms_pages(:privacy)
       end
 
       def collection
-        @collection ||= gobierto_common_collections(:news)
+        @collection ||= gobierto_common_collections(:site_news)
       end
 
       def current_uri_query_params
@@ -40,27 +40,35 @@ module GobiertoAdmin
           with_signed_in_admin(admin) do
             with_current_site(site) do
               visit @path
+
+              # byebug
+              assert has_selector?("h1", text: "CMS")
+
+
               within "tr#collection-item-#{collection.id}" do
-                click_link "News"
+                click_link "Site news"
               end
 
               assert has_selector?("h1", text: "CMS")
+              assert_equal admin_common_collection_path(collection.id), current_path
 
-              click_link cms_page.title
+              within "table.pages-list " do #"tr#collection-item-#{collection.id}" do
+                click_link "Site news 1"
+              end
 
-              fill_in "page_title_translations_en", with: "Themes updated"
-              fill_in "page_slug", with: "themes-updated"
+              fill_in "page_title_translations_en", with: "privacy page updated"
+              fill_in "page_slug", with: "privacy-page-updated"
               fill_in "page_published_on", with: chosen_publication_date
 
               click_button "Update"
 
               assert has_message?("Page updated successfully")
 
-              assert has_field?("page_slug", with: "themes-updated")
+              assert has_field?("page_slug", with: "privacy-page-updated")
               assert_equal chosen_publication_date.to_s, air_datepicker_field_value(:page_published_on)
 
               assert_equal(
-                "These are the themes",
+                "body site news 1",
                 find("#page_body_translations_en", visible: false).value
               )
             end

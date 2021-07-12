@@ -1,14 +1,15 @@
 <table class="pages-list">
-  <tr>
-    <th></th>
-    <th></th>
-    <th><%= t('.file_name') %></th>
-    <th><%= GobiertoCms::Page.human_attribute_name(:title) %></th>
-    <th><%= t('.created_at') %></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th><%= t('.file_name') %></th>
+      <th><%= GobiertoCms::Page.human_attribute_name(:title) %></th>
+      <th><%= t('.created_at') %></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
   <tbody>
     <% @file_attachments.each do |file_attachment| %>
       <tr id="file_attachment-item-<%= file_attachment.id %>">
@@ -25,7 +26,7 @@
         </td>
         <td>
           <%= link_to "<i class='fas fa-trash'></i>".html_safe,
-                      admin_attachments_file_attachment_path(file_attachment, process_id: (current_process.id if !defined?(current_process).nil?)),
+                      admin_attachments_file_attachment_path(file_attachment),
                       title: t("gobierto_admin.shared.archive.element"),
                       method: :delete,
                       data: { confirm: t("gobierto_admin.shared.archive.confirm") } %>
@@ -42,15 +43,16 @@
 
   <div id="archived-list" style="display:none">
     <table class="pages-list">
-      <tr>
-        <th></th>
-        <th></th>
-        <th><%= t('.file_name') %></th>
-        <th><%= GobiertoCms::Page.human_attribute_name(:title) %></th>
-        <th><%= t('.created_at') %></th>
-        <th></th>
-      </tr>
-
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th><%= t('.file_name') %></th>
+          <th><%= GobiertoCms::Page.human_attribute_name(:title) %></th>
+          <th><%= t('.created_at') %></th>
+          <th></th>
+        </tr>
+      </thead>
       <tbody>
         <% @archived_file_attachments.each do |file_attachment| %>
           <tr id="file_attachment-item-<%= file_attachment.id %>">
@@ -61,7 +63,7 @@
             <td><%= time_ago_in_words(file_attachment.created_at) %></td>
             <td>
               <%= link_to t("gobierto_admin.shared.recover.element"),
-                          admin_attachments_file_attachment_recover_path(file_attachment, process_id: (current_process.id if !defined?(current_process).nil?)),
+                          admin_attachments_file_attachment_recover_path(file_attachment),
                           title: t("gobierto_admin.shared.recover.element"),
                           method: :put,
                           data: { confirm: t("gobierto_admin.shared.recover.confirm") } %>

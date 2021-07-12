@@ -1,8 +1,10 @@
 class CopyProcessBodyToBodySource < ActiveRecord::Migration[5.2]
   def change
-    ::GobiertoParticipation::Process.all.each do |process|
-      process.body_source_translations = process.body_translations
-      process.save!
+    if defined? GobiertoParticipation::Process
+      ::GobiertoParticipation::Process.all.each do |process|
+        process.body_source_translations = process.body_translations
+        process.save!
+      end
     end
   end
 end

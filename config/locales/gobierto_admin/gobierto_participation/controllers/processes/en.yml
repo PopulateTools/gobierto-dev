@@ -1,9 +1,0 @@
----
-en:
-  gobierto_admin:
-    gobierto_participation:
-      configuration:
-        settings:
-          update:
-            error: There was a problem when saving configuration
-            success: Configuration stored successfully

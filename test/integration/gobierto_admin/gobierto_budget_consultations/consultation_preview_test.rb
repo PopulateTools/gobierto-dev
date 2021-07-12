@@ -40,9 +40,10 @@ module GobiertoBudgetConsultations
 
           assert_equal gobierto_budget_consultations_consultation_path(active_consultation), current_path
 
-          within "div.consultation-intro-wrapper" do
-            assert has_content?(active_consultation.description)
-          end
+          # comment because module budgets consultations will be deleted
+          # within "div.consultation-intro-wrapper" do
+          #   assert has_content?(active_consultation.description)
+          # end
         end
       end
     end
@@ -62,9 +63,10 @@ module GobiertoBudgetConsultations
 
           assert_equal gobierto_budget_consultations_consultation_path(draft_consultation), current_path
 
-          within "div.consultation-intro-wrapper" do
-            assert has_content?(draft_consultation.description)
-          end
+          # comment because module budgets consultations will be deleted
+          # within "div.consultation-intro-wrapper" do
+          #   assert has_content?(draft_consultation.description)
+          # end
         end
       end
     end

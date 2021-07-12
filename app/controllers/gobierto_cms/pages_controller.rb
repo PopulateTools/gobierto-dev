@@ -2,7 +2,7 @@
 
 module GobiertoCms
   class PagesController < GobiertoCms::ApplicationController
-    before_action :load_section, :load_current_process, only: [:show]
+    before_action :load_section, only: [:show]
     before_render :load_collection_pages
 
     def index
@@ -36,7 +36,7 @@ module GobiertoCms
       if @collection.nil? || (!page.public? && !valid_preview_token?)
         raise ActiveRecord::RecordNotFound
       end
-      GobiertoCms::PageDecorator.new(page, @current_process.class.name || @collection.container_type, @collection.item_type)
+      GobiertoCms::PageDecorator.new(page, @collection.container_type, @collection.item_type)
     end
 
     def find_section_item
@@ -55,12 +55,6 @@ module GobiertoCms
 
     def check_collection_type
       render_404 and return false if @collection.item_type != "GobiertoCms::Page"
-    end
-
-    def load_current_process
-      if params[:process_id]
-        @current_process = processes_scope.find_by!(slug: params[:process_id])
-      end
     end
 
     def processes_scope

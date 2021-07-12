@@ -97,7 +97,6 @@ en:
       budget_line_item_income: Budget line - Income
       charter: Services charter
       charter_commitment: Services charter - Indicator
-      contribution_item: Contribution
       dataset_item: Dataset
       drag_drop_instructions: Drag and drop on the left side to place this page in
         the menu
@@ -109,7 +108,6 @@ en:
       person_post_item: Post
       person_statement_item: Statement
       plan_project_item: Plan - Project/Action
-      process_item: Process
       updated: Updated
   scopes:
     events:
@@ -132,10 +130,6 @@ en:
       update: Update
     poll_question:
       multiple_choice_msg: You can choose several options
-    poll_teaser:
-      answer: Answer
-      next_question: Next question
-      submit: Send
     polls:
       no_unanswered_polls: There are no polls to answer.
       opinion: Opinion
@@ -152,7 +146,6 @@ en:
   views:
     delete: Delete
     delete_confirm: Are you sure? This operation can not be undone
-    drag_to_sort: Drag to sort
     edit: Edit
     forms:
       max_characters: Max. %{length} characters

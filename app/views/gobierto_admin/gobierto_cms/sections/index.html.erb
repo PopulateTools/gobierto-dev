@@ -11,12 +11,14 @@
 </div>
 
 <table>
-  <tr>
-    <th class="icon_col"></th>
-    <th><%= t('.header.title') %></th>
-    <th><%= t('.header.pages') %></th>
-    <th></th>
-  </tr>
+  <thead>
+    <tr>
+      <th class="icon_col"></th>
+      <th><%= t('.header.title') %></th>
+      <th><%= t('.header.pages') %></th>
+      <th></th>
+    </tr>
+  </thead>
 
   <tbody>
     <% @sections.each do |section| %>
@@ -31,7 +33,7 @@
           <%= section.section_items.size %>
         </td>
         <td>
-          <%= link_to "gobierto_participation_section_path(section.slug ,host: current_site.domain)", target: "_blank", class: "view_item" do %>
+          <%= link_to admin_cms_section_path(section.id), target: "_blank", class: "view_item" do %>
             <i class="fas fa-eye"></i>
             <%= t(".view") %>
           <% end %>

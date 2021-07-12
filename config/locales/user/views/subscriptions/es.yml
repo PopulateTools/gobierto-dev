@@ -10,7 +10,6 @@ es:
           gobierto_budget_consultations: Consultas de presupuestos
           gobierto_budgets: Presupuestos
           gobierto_observatory: Observatorio
-          gobierto_participation: Participación
           gobierto_people: Personas
         notification_frequency:
           daily: Resumen diario
@@ -19,7 +18,6 @@ es:
           immediate: Inmediatas
           submit: Guardar
           weekly: Resumen semanal
-        participation: Participación
         people: Personas
         submit: Guardar
         title: Tus alertas

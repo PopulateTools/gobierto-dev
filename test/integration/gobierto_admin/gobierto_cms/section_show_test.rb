@@ -22,8 +22,8 @@ module GobiertoAdmin
         @sections ||= site.sections
       end
 
-      def participation_section
-        @participation_section ||= gobierto_cms_section_items(:participation_items)
+      def section_item
+        @section_item ||= gobierto_cms_section_items(:cms_section_madrid_1_item_a)
       end
 
       def test_sections_show
@@ -32,10 +32,10 @@ module GobiertoAdmin
             visit @path
 
             within "#sections" do
-              click_link participation_section.section.title
+              click_link section_item.section.title
             end
 
-            assert has_selector?("h1", text: participation_section.section.title)
+            assert has_selector?("h1", text: section_item.section.title)
             assert has_content? "Last edited pages"
           end
         end

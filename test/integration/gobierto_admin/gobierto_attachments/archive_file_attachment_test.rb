@@ -7,7 +7,8 @@ module GobiertoAdmin
     class ArchiveFileAttachmentTest < ActionDispatch::IntegrationTest
       def setup
         super
-        @path = admin_participation_process_file_attachments_path(process_id: process.id)
+        @collection = gobierto_common_collections(:site_attachments)
+        @path =  admin_common_collection_path(id: @collection.id)
       end
 
       def admin
@@ -16,10 +17,6 @@ module GobiertoAdmin
 
       def site
         @site ||= sites(:madrid)
-      end
-
-      def process
-        @process ||= gobierto_participation_processes(:gender_violence_process)
       end
 
       def pdf_attachment

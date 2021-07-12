@@ -1,6 +1,0 @@
-<% if params[:page] && params[:page].to_i > 1 %>
-  $('.see_more').remove();
-  $('<%=j render(partial: 'event_teaser', collection: @events)%>').appendTo('#events');
-<% else %>
-  $("#events-list").html('<%=j render(partial: "event_teaser", locals: { person_events: @events, no_upcoming_events: @no_upcoming_events, people_filter: GobiertoPeople::Person.parties.key(@person_party) || GobiertoPeople::Person.categories.key(@person_category) } ) %>');
-<% end %>

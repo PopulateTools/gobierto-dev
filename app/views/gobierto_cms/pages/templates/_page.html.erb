@@ -27,22 +27,6 @@
 
             <%== render_liquid(@page.body) %>
 
-            <% if @page.attachments.any? %>
-              <div class="page_attachments">
-                <h3><%= t("gobierto_participation.shared.documents") %></h3>
-                <% @page.attachments.each do |attachment| %>
-                  <div class="file">
-                    <%= link_to attachment.human_readable_path do %>
-                      <div class="icon"><%= filetype_icon(attachment) %></div>
-                      <h4><%= attachment.name %></h4>
-                      <div class="meta">
-                        <%= attachment.extension.upcase %> · <%= number_to_human_size(attachment.file_size, precision: 2, separator: ",") %> · <%= attachment.file_name %>
-                      </div>
-                    <% end %>
-                  </div>
-                <% end %>
-              </div>
-            <% end %>
           </article>
 
         </div>

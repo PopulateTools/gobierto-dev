@@ -11,14 +11,7 @@ module GobiertoCms
     attr_reader :context
 
     def template
-      case context
-        when "GobiertoParticipation"
-          "gobierto_participation/pages/templates/#{sub_template}"
-        when "GobiertoParticipation::Process"
-          "gobierto_participation/processes/pages/templates/#{sub_template}"
-        else
-          default_template
-      end
+      "gobierto_cms/pages/templates/#{@object.template || sub_template}"
     end
 
     def main_image
@@ -38,10 +31,6 @@ module GobiertoCms
 
     def sub_template
       item_type.split('::').last.downcase
-    end
-
-    def default_template
-      "gobierto_cms/pages/templates/#{@object.template || sub_template}"
     end
 
   end

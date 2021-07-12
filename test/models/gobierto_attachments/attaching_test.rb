@@ -29,8 +29,6 @@ module GobiertoAttachments
     end
 
     def test_create_attaching_creating_collection
-      site.collections.where(item_type: "GobiertoAttachments::Attachment").each(&:destroy)
-
       attaching = GobiertoAttachments::Attaching.create!(
         attachment: pdf_attachment,
         attachable: attachable

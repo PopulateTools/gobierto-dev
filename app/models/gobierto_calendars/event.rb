@@ -139,14 +139,7 @@ module GobiertoCalendars
 
     def to_path
       return if archived?
-
-      if collection.container_type == "GobiertoParticipation::Process"
-        url_helpers.gobierto_participation_process_event_path(id: slug, process_id: container.slug)
-      elsif collection.container_type == "GobiertoParticipation"
-        url_helpers.gobierto_participation_event_path(id: slug)
-      else
-        url_helpers.gobierto_people_person_event_path(parameterize)
-      end
+      url_helpers.gobierto_people_person_event_path(parameterize)
     end
     alias resource_path to_path
 
@@ -155,14 +148,7 @@ module GobiertoCalendars
         options[:preview_token] = options[:admin].preview_token
       end
       options = options.except(:admin, :preview)
-
-      if collection.container_type == "GobiertoParticipation::Process"
-        url_helpers.gobierto_participation_process_event_url({ id: slug, process_id: container.slug, host: site_domain }.merge(options))
-      elsif collection.container_type == "GobiertoParticipation"
-        url_helpers.gobierto_participation_event_url({ id: slug, host: site_domain }.merge(options))
-      else
-        url_helpers.gobierto_people_person_event_url(parameterize.merge(host: site_domain).merge(options))
-      end
+      url_helpers.gobierto_people_person_event_url(parameterize.merge(host: site_domain).merge(options))
     end
 
     def first_location
@@ -184,9 +170,7 @@ module GobiertoCalendars
     end
 
     def public_parent?
-      if process
-        process.reload.public?
-      elsif person
+      if person
         person.reload.public?
       else
         true
