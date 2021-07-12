@@ -4,20 +4,6 @@ namespace :common do
   namespace :migrate_to_vocabularies do
     desc "Generate a vocabulary for each site from existing issues"
     task issues: :environment do
-      ignored_attributes = %w(id site_id created_at updated_at)
-      Site.all.each do |site|
-        next if Issue.where(site: site).blank?
-        puts "== Migrating issues of #{ site.domain }"
-        issues = site.vocabularies.find_or_create_by(name: "issues")
-        scopes_vocabulary_id = site.gobierto_participation_settings&.scopes_vocabulary_id
-        settings = ::GobiertoAdmin::GobiertoParticipation::SettingsForm.new(site_id: site.id, issues_vocabulary_id: issues.id, scopes_vocabulary_id: scopes_vocabulary_id)
-        settings.save
-        Issue.where(site: site).each do |issue|
-          next if issues.terms.where(slug: issue.slug).exists?
-          term = issues.terms.create(issue.attributes.except(*ignored_attributes))
-          puts "== Created term of issues vocabulary: #{ term.name }"
-        end
-      end
 
       GobiertoCommon::Collection.where(container_type: "Issue").each do |collection|
         move_issue_to_term(
@@ -57,33 +43,10 @@ namespace :common do
         )
       end
 
-      GobiertoParticipation::Process.where.not(issue_id: nil).each do |process|
-        site = process.site
-        next if (issue = Issue.where(site: site).find_by_id(process.issue_id)).blank?
-        term = site.issues.find_by(name_translations: issue.name_translations)
-        if term.blank?
-          term = site.issues.terms.create(issue.attributes.except(*ignored_attributes))
-        end
-        process.update_attribute(:issue_id, term.id)
-      end
     end
 
     desc "Generate a vocabulary for each site from existing scopes"
     task scopes: :environment do
-      ignored_attributes = %w(id site_id created_at updated_at)
-      Site.all.each do |site|
-        next if GobiertoCommon::Scope.where(site: site).blank?
-        puts "== Migrating scopes of #{ site.domain }"
-        scopes = site.vocabularies.find_or_create_by(name: "scopes")
-        issues_vocabulary_id = site.gobierto_participation_settings&.issues_vocabulary_id
-        settings = ::GobiertoAdmin::GobiertoParticipation::SettingsForm.new(site_id: site.id, scopes_vocabulary_id: scopes.id, issues_vocabulary_id: issues_vocabulary_id)
-        settings.save
-        GobiertoCommon::Scope.where(site: site).each do |scope|
-          next if scopes.terms.where(slug: scope.slug).exists?
-          term = scopes.terms.create(scope.attributes.except(*ignored_attributes))
-          puts "== Created term of scopes vocabulary: #{ term.name }"
-        end
-      end
 
       GobiertoCommon::Collection.where(container_type: "GobiertoCommon::Scope").each do |collection|
         move_scope_to_term(
@@ -123,15 +86,6 @@ namespace :common do
         )
       end
 
-      GobiertoParticipation::Process.where.not(scope_id: nil).each do |process|
-        site = process.site
-        next if (scope = GobiertoCommon::Scope.where(site: site).find_by_id(process.scope_id)).blank?
-        term = site.scopes.find_by(name_translations: scope.name_translations)
-        if term.blank?
-          term = site.scopes.terms.create(scope.attributes.except(*ignored_attributes))
-        end
-        process.update_attribute(:scope_id, term.id)
-      end
     end
 
     desc "Generate a vocabulary for each site from existing political groups"

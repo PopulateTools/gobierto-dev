@@ -68,7 +68,7 @@ YAML
             end
 
             select privacy_page.title, from: "site_privacy_page_id"
-            select "GobiertoParticipation", from: "site_home_page"
+            select "GobiertoBudgets", from: "site_home_page"
 
             with_stubbed_s3_file_upload do
               with_stubbed_s3_upload! do
@@ -90,7 +90,7 @@ YAML
             assert has_field?("site_links_markup", with: "Site Links markup")
             assert has_field?("site_google_analytics_id", with: "UA-000000-01")
             assert has_select?("Privacy page", selected: privacy_page.title)
-            assert has_select?("site_home_page", selected: "GobiertoParticipation")
+            assert has_select?("site_home_page", selected: "GobiertoBudgets")
             assert has_field?("site_populate_data_api_token", with: "APITOKEN")
             assert has_field?("site_raw_configuration_variables", with: "var1: value1\r\nvar2: value2\r\n")
 
