@@ -340,20 +340,10 @@ tamara_justice_department_event_pepsi_very_old_site:
 
 # reading_club
 
-reading_club_on_process:
-  collection: gender_violence_process_calendar
-  item: reading_club (GobiertoCalendars::Event)
-  container: gender_violence_process (GobiertoParticipation::Process)
-
 reading_club_on_site:
   collection: gender_violence_process_calendar
   item: reading_club (GobiertoCalendars::Event)
   container: madrid (Site)
-
-reading_club_on_participation:
-  collection: gender_violence_process_calendar
-  item: reading_club (GobiertoCalendars::Event)
-  container_type: GobiertoParticipation
 
 reading_club_on_issue:
   collection: gender_violence_process_calendar
@@ -367,20 +357,10 @@ reading_club_on_scope:
 
 # swimming_lessons
 
-swimming_lessons_on_process:
-  collection: gender_violence_process_calendar
-  item: swimming_lessons (GobiertoCalendars::Event)
-  container: gender_violence_process (GobiertoParticipation::Process)
-
 swimming_lessons_on_site:
   collection: gender_violence_process_calendar
   item: swimming_lessons (GobiertoCalendars::Event)
   container: madrid (Site)
-
-swimming_lessons_on_participation:
-  collection: gender_violence_process_calendar
-  item: swimming_lessons (GobiertoCalendars::Event)
-  container_type: GobiertoParticipation
 
 swimming_lessons_on_issue:
   collection: gender_violence_process_calendar
@@ -394,20 +374,10 @@ swimming_lessons_on_scope:
 
 # intervention_with_children
 
-intervention_with_children_on_process:
-  collection: gender_violence_process_calendar
-  item: intervention_with_children (GobiertoCalendars::Event)
-  container: gender_violence_process (GobiertoParticipation::Process)
-
 intervention_with_children_on_site:
   collection: gender_violence_process_calendar
   item: intervention_with_children (GobiertoCalendars::Event)
   container: madrid (Site)
-
-intervention_with_children_on_participation:
-  collection: gender_violence_process_calendar
-  item: intervention_with_children (GobiertoCalendars::Event)
-  container_type: GobiertoParticipation
 
 intervention_with_children_on_issue:
   collection: gender_violence_process_calendar
@@ -436,8 +406,3 @@ innovation_event_on_site:
   collection: participation_calendar
   item: innovation_event (GobiertoCalendars::Event)
   container: madrid (Site)
-
-innovation_event_on_participation:
-  collection: participation_calendar
-  item: innovation_event (GobiertoCalendars::Event)
-  container_type: GobiertoParticipation

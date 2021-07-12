@@ -11,7 +11,7 @@ module GobiertoAdmin
       end
 
       def collection
-        @collection ||= gobierto_common_collections(:files)
+        @collection ||= gobierto_common_collections(:site_attachments)
       end
 
       def admin

@@ -1,17 +1,12 @@
-<% if @collection.container.is_a?(::GobiertoParticipation::Process) %>
-  <%= render 'gobierto_admin/gobierto_participation/shared/breadcrumb', last_breadcrumb_item: t('gobierto_admin.gobierto_calendars.events.new.title'), process: @collection.container %>
-  <h1><%= @collection.container.title %></h1>
-  <%= render 'gobierto_admin/gobierto_participation/shared/navigation', current_process: @collection.container %>
+<%= render "gobierto_admin/gobierto_calendars/events/person_breadcrumb" %>
+
+<% if @person %>
+  <h1><%= @person.name %></h1>
+
+  <%= render "gobierto_admin/gobierto_people/people/navigation" %>
 <% else %>
-  <%= render "gobierto_admin/gobierto_calendars/events/person_breadcrumb" %>
-
-  <% if @person %>
-    <h1><%= @person.name %></h1>
-
-    <%= render "gobierto_admin/gobierto_people/people/navigation" %>
-  <% else %>
-    <h1><%= @collection.title %></h1>
-  <% end %>
+  <h1><%= @collection.title %></h1>
 <% end %>
+
 
 <%= render "form" %>

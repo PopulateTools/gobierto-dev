@@ -23,7 +23,7 @@ module GobiertoAdmin
       end
 
       def template
-        @template ||= gobierto_core_templates(:participation_index)
+        @template ||= gobierto_core_templates(:application_layout)
       end
 
       def test_index

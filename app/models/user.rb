@@ -16,10 +16,7 @@ class User < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_many :api_tokens, dependent: :destroy, class_name: "User::ApiToken"
   has_many :custom_records, dependent: :destroy, class_name: "GobiertoCommon::CustomUserFieldRecord"
-  has_many :contributions, dependent: :destroy, class_name: "GobiertoParticipation::Contribution"
-  has_many :flags, dependent: :destroy, class_name: "GobiertoParticipation::Flag"
-  has_many :votes, dependent: :destroy, class_name: "GobiertoParticipation::Vote"
-  has_many :comment, dependent: :destroy, class_name: "GobiertoParticipation::Comment"
+
 
   after_create :primary_api_token!
 

@@ -84,13 +84,6 @@
               <%= t(".view_event") %>
             <% end %>
           </td>
-          <td>
-            <%= link_to "<i class='fas fa-trash'></i>".html_safe,
-                        admin_calendars_event_path(event, process_id: (current_process.id if !defined?(current_process).nil?)),
-                        title: t("gobierto_admin.shared.archive.element"),
-                        method: :delete,
-                        data: { confirm: t("gobierto_admin.shared.archive.confirm") } %>
-          </td>
         </tr>
       <% end %>
     </tbody>
@@ -112,7 +105,6 @@
             <th><%= t(".header.date") %></th>
             <th><%= t(".header.location") %></th>
             <th><%= t(".header.status") %></th>
-            <th></th>
           </tr>
         </thead>
 
@@ -138,14 +130,12 @@
               <td>
                 <%= t(".visibility_level.archived") %>
               </td>
-              <td>
-                <%= link_to t("gobierto_admin.shared.recover.element"),
-                  admin_calendars_event_recover_path(event, process_id: (current_process.id if !defined?(current_process).nil?)),
-                  title: t("gobierto_admin.shared.recover.element"),
-                  method: :put,
-                  data: { confirm: t("gobierto_admin.shared.recover.confirm") } %>
-
-            </td>
+               <td>
+                <%= link_to "<i class='fas fa-trash'></i>".html_safe, admin_calendars_event_path(event),
+                            title: t("gobierto_admin.shared.archive.element"),
+                            method: :delete,
+                            data: { confirm: t("gobierto_admin.shared.archive.confirm") } %>
+              </td>
             </tr>
           <% end %>
         </tbody>

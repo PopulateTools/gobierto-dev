@@ -102,10 +102,6 @@ module GobiertoCommon
       container.try(:name) || container.try(:title)
     end
 
-    def is_a_collection_of_participation_news?
-      container.is_a?(::GobiertoParticipation::Process) && item_type == 'GobiertoCms::News'
-    end
-
     def public?
       container.try(:reload).try(:public?) != false
     end
@@ -154,11 +150,7 @@ module GobiertoCommon
     end
 
     def parameterize
-      if container.is_a? ::GobiertoParticipation::Process
-        { process_id: container.slug }
-      elsif container_type == "GobiertoParticipation"
-        {}
-      elsif container.is_a? ::GobiertoPeople::Person
+      if container.is_a? ::GobiertoPeople::Person
         { container_slug: container.slug }
       else
         { id: slug }
@@ -191,44 +183,10 @@ module GobiertoCommon
                                           item_id: item.id,
                                           item_type: item_type
       end
-
-      if container_type == "GobiertoParticipation::Process"
-        process = GobiertoParticipation::Process.find(container_id)
-
-        if process.issue
-          CollectionItem.find_or_create_by! collection_id: id,
-                                            container: process.issue,
-                                            item_id: item.id,
-                                            item_type: item_type
-        end
-
-        if process.scope
-          CollectionItem.find_or_create_by! collection_id: id,
-                                            container: process.scope,
-                                            item_id: item.id,
-                                            item_type: item_type
-        end
-      end
     end
 
     def singular_route_key
-      if container.is_a? ::GobiertoParticipation::Process
-        if item_type == "GobiertoCalendars::Event"
-          :gobierto_participation_process_events
-        elsif item_type == "GobiertoCms::News"
-          :gobierto_participation_process_news_index
-        elsif item_type == "GobiertoAttachments::Attachment"
-          :gobierto_participation_process_attachments
-        end
-      elsif container_type == "GobiertoParticipation"
-        if item_type == "GobiertoCalendars::Event"
-          :gobierto_participation_events
-        elsif item_type == "GobiertoCms::News"
-          :gobierto_participation_news_index
-        elsif item_type == "GobiertoAttachments::Attachment"
-          :gobierto_participation_attachments
-        end
-      elsif container.is_a?(::GobiertoPeople::Person) && item_type == "GobiertoCalendars::Event"
+      if container.is_a?(::GobiertoPeople::Person) && item_type == "GobiertoCalendars::Event"
         :gobierto_people_person_events
       elsif container.is_a? Site
         if item_type == "GobiertoCms::News"

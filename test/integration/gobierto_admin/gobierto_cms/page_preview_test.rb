@@ -19,19 +19,15 @@ module GobiertoAdmin
       end
 
       def published_page
-        @published_page ||= gobierto_cms_pages(:themes)
+        @published_page ||= gobierto_cms_pages(:consultation_faq)
       end
 
       def draft_page
-        @draft_page ||= gobierto_cms_pages(:themes_draft)
+        @draft_page ||= gobierto_cms_pages(:about_site)
       end
 
       def collection
-        @collection ||= gobierto_common_collections(:news)
-      end
-
-      def sport_city_process
-        @sport_city_process ||= gobierto_participation_processes(:sport_city_process)
+        @collection ||= gobierto_common_collections(:site_pages)
       end
 
       def test_preview_published_page
@@ -40,19 +36,19 @@ module GobiertoAdmin
             visit @path
 
             within "tr#collection-item-#{collection.id}" do
-              click_link "News"
+              click_link "Site pages"
             end
 
             within "tr#page-item-#{published_page.id}" do
               preview_link = find("a", text: "View page")
 
               refute preview_link[:href].include?(admin.preview_token)
-
               preview_link.click
             end
 
-            assert_equal gobierto_cms_news_path(published_page.slug), current_path
             assert has_selector?("h1", text: published_page.title)
+            assert_equal gobierto_cms_page_path(published_page.slug), current_path
+
           end
         end
       end
@@ -63,18 +59,17 @@ module GobiertoAdmin
             visit @path
 
             within "tr#collection-item-#{collection.id}" do
-              click_link "News"
+              click_link "Site pages"
             end
 
             within "tr#page-item-#{draft_page.id}" do
               preview_link = find("a", text: "View page")
 
               assert preview_link[:href].include?(admin.preview_token)
-
               preview_link.click
             end
 
-            assert_equal gobierto_cms_news_path(draft_page.slug), current_path
+            assert_equal gobierto_cms_page_path(draft_page.slug), current_path
             assert has_selector?("h1", text: draft_page.title)
           end
         end

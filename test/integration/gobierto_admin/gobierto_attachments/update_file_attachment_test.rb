@@ -27,9 +27,12 @@ module GobiertoAdmin
           with_signed_in_admin(admin) do
             with_current_site(site) do
               visit @path
-              click_link "Documents Gender Violence"
+
+              click_link "Site attachments"
+              assert has_selector?("h1", text: "Documents")
 
               click_link "PDF Collection Attachment Name"
+              assert has_selector?("h2", text: "PDF Collection Attachment Name")
 
               fill_in "file_attachment_name", with: "File attachment name updated"
               fill_in "file_attachment_description", with: "File attachment description updated"
@@ -51,9 +54,12 @@ module GobiertoAdmin
           with_signed_in_admin(admin) do
             with_current_site(site) do
               visit @path
-              click_link "Documents Gender Violence"
+
+              click_link "Site attachments"
+              assert has_selector?("h1", text: "Documents")
 
               click_link "PDF Collection Attachment Name"
+              assert has_selector?("h2", text: "PDF Collection Attachment Name")
 
               fill_in "file_attachment_description", with: "File attachment description updated"
               fill_in "file_attachment_name", with: ""

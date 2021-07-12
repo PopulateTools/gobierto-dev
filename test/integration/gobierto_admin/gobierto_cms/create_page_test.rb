@@ -19,7 +19,7 @@ module GobiertoAdmin
       end
 
       def collection
-        @collection ||= gobierto_common_collections(:news)
+        @collection ||= gobierto_common_collections(:site_news)
       end
 
       def chosen_publication_date
@@ -30,18 +30,19 @@ module GobiertoAdmin
         Time.zone.parse("2018-01-01 12:30:59 +0100")
       end
 
-      def test_create_page_errors
+      def test_create_page_into_collections_fails
         with(site: site, admin: admin, js: true) do
           visit @path
 
           within "tr#collection-item-#{collection.id}" do
-            click_link "News"
+            click_link "Site news"
           end
 
           assert has_selector?("h1", text: "CMS")
 
-          click_link "New"
-          assert has_selector?("h1", text: "Sport city")
+          within ".admin_tools" do
+            click_link "New"
+          end
 
           fill_in "page_title_translations_en", with: "My page"
           click_button "Create"
@@ -50,20 +51,21 @@ module GobiertoAdmin
         end
       end
 
-      def test_create_page
+      def test_create_page_into_collections_success
         Timecop.freeze(stubbed_current_time)
 
         with(site: site, admin: admin, js: true) do
           visit @path
 
           within "tr#collection-item-#{collection.id}" do
-            click_link "News"
+            click_link "Site news"
           end
 
           assert has_selector?("h1", text: "CMS")
 
-          click_link "New"
-          assert has_selector?("h1", text: "Sport city")
+          within ".admin_tools" do
+            click_link "New"
+          end
 
           # ensure default date is set
           assert_equal stubbed_current_time.to_s, air_datepicker_field_value(:page_published_on)

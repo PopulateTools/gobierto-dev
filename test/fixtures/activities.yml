@@ -42,14 +42,3 @@ budgets_exeuction_functional_updated:
   admin_activity: false
   site: madrid
 
-# Processes activities
-<% 10.times do |n| %>
-center_scope_process_activity_<%= n %>:
-  action: 'gobierto_participation.contribution_created'
-  subject: center_idea (GobiertoParticipation::Contribution)
-  author: nil
-  recipient: center_scope_process (GobiertoParticipation::Process)
-  subject_ip: '127.0.0.1'
-  admin_activity: false
-  site: madrid
-<% end %>

@@ -15,7 +15,7 @@ module GobiertoAdmin
         default_locale: "es",
         available_locales: %w(es ca),
         privacy_page_id: privacy_page.id,
-        home_page: "GobiertoParticipation"
+        home_page: "GobiertoBudgets"
       )
     end
 

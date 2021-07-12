@@ -38,7 +38,7 @@ module GobiertoAdmin
       end
 
       def vocabulary_used_in_other_context
-        @vocabulary_used_in_other_context ||= gobierto_common_vocabularies(:issues_vocabulary)
+        @vocabulary_used_in_other_context ||= gobierto_common_vocabularies(:madrid_political_groups_vocabulary)
       end
 
       def blank_status_term

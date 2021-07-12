@@ -7,7 +7,6 @@ module ApplicationHelper
     if current_site&.configuration&.engine_overrides&.any?
       classes.push(Rails.configuration.gobierto_engines_themes[current_site.configuration.engine_overrides.first])
     end
-    classes.push current_module == "gobierto_participation" ? "gobierto_participation theme-participation" : current_module
     classes.push controller_name
     classes.push action_name
     classes.push "#{controller_name}_#{action_name}"
@@ -20,11 +19,6 @@ module ApplicationHelper
     partial_file_name = "#{partial_path_name.dirname}/_#{partial_path_name.basename}.#{format}"
 
     render(partial_path, partial_params) if lookup_context.exists?(partial_file_name)
-  end
-
-  # Example: translate_enum_value(GobiertoParticipation::ProcessStage, :stage_type, :information)
-  def translate_enum_value(object, enum_name, enum_value_name)
-    I18n.t("activerecord.attributes.#{object.model_name.i18n_key}.#{enum_name.to_s.pluralize}.#{enum_value_name}")
   end
 
   def localized_enum(class_name, enum_name)
@@ -52,8 +46,7 @@ module ApplicationHelper
   end
 
   def full_layout?
-    (current_module == "gobierto_participation") &&
-      ((controller_name == "contribution_containers" && action_name == "show") || (controller_name == "poll_answers" && action_name == "new"))
+    (controller_name == "contribution_containers" && action_name == "show") || (controller_name == "poll_answers" && action_name == "new")
   end
 
   def filetype_icon(attachment)
@@ -81,22 +74,6 @@ module ApplicationHelper
 
   def current_parameters_with_year(year)
     params.except(:host, :port, :protocol).merge(year: year).permit!
-  end
-
-  def next_poll(poll_id = nil)
-    poll = GobiertoParticipation::Poll.by_site(current_site).find(poll_id) if poll_id
-    answerable_polls = GobiertoParticipation::Poll.by_site(current_site).answerable.order(ends_at: :asc)
-    answerable_polls_by_user = answerable_polls.detect { |p| p.answerable_by?(current_user) } if current_user
-
-    if current_user
-      if poll&.answerable_by?(current_user)
-        poll
-      elsif answerable_polls_by_user
-        answerable_polls_by_user
-      end
-    else
-      answerable_polls.first
-    end
   end
 
   def content_for_if(name, condition, &block)

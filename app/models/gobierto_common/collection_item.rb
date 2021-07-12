@@ -16,7 +16,7 @@ module GobiertoCommon
 
     scope :by_container_type, ->(container_type) { where(container_type: container_type) }
     scope :by_container, ->(container) { where(container: container) }
-    scope :on_processes, -> { by_container_type("GobiertoParticipation::Process") }
+
     scope :on_people, -> { by_container_type("GobiertoPeople::Person") }
 
     def container

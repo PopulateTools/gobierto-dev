@@ -27,7 +27,7 @@ module GobiertoAdmin
       end
 
       def section
-        @section ||= gobierto_cms_sections(:participation)
+        @section ||= gobierto_cms_sections(:cms_section_madrid_1)
       end
 
       def test_create_section_item
@@ -54,7 +54,7 @@ module GobiertoAdmin
               click_button "Create"
 
               assert has_message?("Page created successfully")
-              assert has_link?("View the page", href: "/s/participacion/new-page-with-section?preview_token=nick-preview-token")
+              assert has_link?("View the page", href: "/s/a-section/new-page-with-section?preview_token=nick-preview-token")
               assert has_field?("page_slug", with: "new-page-with-section")
 
               assert_equal(

@@ -102,7 +102,6 @@ ca:
       budget_line_item_income: Partida pressupostària - Ingrés
       charter: Carta de serveis
       charter_commitment: Carta de serveis - Indicador
-      contribution_item: Aportacions
       dataset_item: Dades
       drag_drop_instructions: Arrossegueu i deixeu anar al costat esquerre per a col·locar
         aquesta pàgina al menú
@@ -114,7 +113,6 @@ ca:
       person_post_item: Post
       person_statement_item: Declaració
       plan_project_item: Plan - Actuació
-      process_item: Procés
       updated: Actualitzat
   scopes:
     events:
@@ -137,10 +135,6 @@ ca:
       update: Actualitzar
     poll_question:
       multiple_choice_msg: Podeu triar diverses opcions
-    poll_teaser:
-      answer: Respondre
-      next_question: Següent pregunta
-      submit: Enviar
     polls:
       no_unanswered_polls: No hi ha enquestes pendents de contestar.
       opinion: Opineu
@@ -157,7 +151,6 @@ ca:
   views:
     delete: Eliminar
     delete_confirm: Estàs segur? Aquesta operació no és reversible
-    drag_to_sort: Arrossegueu per a ordenar
     edit: Edita
     forms:
       max_characters: Màx. %{length} caràcters

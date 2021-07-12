@@ -26,10 +26,6 @@ module GobiertoAdmin
         @collections_with_container ||= collections.select { |collection| collection.container.present? }
       end
 
-      def collection_with_archived_container
-        @collection_with_archived_container ||= gobierto_common_collections(:group_archived_documents)
-      end
-
       def test_attachments_index
         with_signed_in_admin(admin) do
           with_current_site(site) do
@@ -37,7 +33,6 @@ module GobiertoAdmin
 
             within "#file_attachments_in_collection" do
               assert has_selector?("tr", count: collections_with_container.size)
-              assert has_no_link?(collection_with_archived_container.title.to_s)
 
               collections_with_container.each do |collection|
                 assert has_selector?("tr#collection-item-#{collection.id}")

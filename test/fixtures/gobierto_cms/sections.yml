@@ -1,6 +1,6 @@
-participation:
-  title_translations: <%= { 'en' => 'Participation', 'es' => 'Participación' }.to_json %>
-  slug: 'participacion'
+cms_section_madrid_1:
+  title_translations: <%= { 'en' => 'CMS section', 'es' => 'Sección CMS' }.to_json %>
+  slug: 'a-section'
   site: madrid
 
 global_navigation_santander:

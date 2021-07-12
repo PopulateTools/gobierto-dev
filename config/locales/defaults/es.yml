@@ -15,7 +15,7 @@ es:
     - vie
     - sáb
     abbr_month_names:
-    -
+    - 
     - ene
     - feb
     - mar
@@ -43,7 +43,7 @@ es:
       short: "%d %b %Y"
       shortest: "%d %b %y"
     month_names:
-    -
+    - 
     - enero
     - febrero
     - marzo

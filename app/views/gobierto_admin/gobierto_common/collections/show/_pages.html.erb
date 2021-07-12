@@ -1,14 +1,16 @@
 <table class="pages-list">
-  <tr>
-    <th></th>
-    <th><%= GobiertoCms::Page.human_attribute_name(:title) %></th>
-    <th><%= t('.created_at') %></th>
-    <th><%= t('.updated_at') %></th>
-    <th><%= t('.published_on') %></th>
-    <th><%= t('.public') %></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <thead>
+    <tr>
+      <th></th>
+      <th><%= GobiertoCms::Page.human_attribute_name(:title) %></th>
+      <th><%= t('.created_at') %></th>
+      <th><%= t('.updated_at') %></th>
+      <th><%= t('.published_on') %></th>
+      <th><%= t('.public') %></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 
   <tbody>
     <% @pages.each do |page| %>
@@ -34,7 +36,7 @@
         </td>
         <td>
           <%= link_to "<i class='fas fa-trash'></i>".html_safe,
-                      admin_cms_page_path(page, process_id: (current_process.id if !defined?(current_process).nil?)),
+                      admin_cms_page_path(page),
                       title: t("gobierto_admin.shared.archive.element"),
                       method: :delete,
                       data: { confirm: t("gobierto_admin.shared.archive.confirm") } %>
@@ -51,16 +53,18 @@
 
   <div id="archived-list" style="display:none">
     <table class="pages-list">
-      <tr>
-        <th></th>
-        <th><%= GobiertoCms::Page.human_attribute_name(:title) %></th>
-        <th><%= t('.created_at') %></th>
-        <th><%= t('.updated_at') %></th>
-        <th><%= t('.published_on') %></th>
-        <th><%= t('.public') %></th>
-        <th></th>
-        <th></th>
-      </tr>
+      <thead>
+        <tr>
+          <th></th>
+          <th><%= GobiertoCms::Page.human_attribute_name(:title) %></th>
+          <th><%= t('.created_at') %></th>
+          <th><%= t('.updated_at') %></th>
+          <th><%= t('.published_on') %></th>
+          <th><%= t('.public') %></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
 
       <tbody>
         <% @archived_pages.each do |page| %>
@@ -76,10 +80,10 @@
             <td></td>
             <td>
               <%= link_to t("gobierto_admin.shared.recover.element"),
-                          admin_cms_page_recover_path(page, process_id: (current_process.id if !defined?(current_process).nil?)),
-                          title: t("gobierto_admin.shared.recover.element"),
-                          method: :put,
-                          data: { confirm: t("gobierto_admin.shared.recover.confirm") } %>
+                            admin_cms_page_recover_path(page),
+                            title: t("gobierto_admin.shared.recover.element"),
+                            method: :put,
+                            data: { confirm: t("gobierto_admin.shared.recover.confirm") } %>
             </td>
           </tr>
         <% end %>

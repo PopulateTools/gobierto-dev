@@ -36,7 +36,7 @@ class SiteTest < ActiveSupport::TestCase
   end
 
   def test_root_path
-    assert_equal "/participacion", site.root_path
+    assert_equal "/presupuestos/elaboracion", site.root_path
   end
 
   # -- Initialization

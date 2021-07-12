@@ -52,13 +52,5 @@ module GobiertoCommon
       end
     end
 
-    def test_associated_vocabulary
-      singular_vocabularies.each do |method|
-        vocabulary_id = site.gobierto_participation_settings.send(GobiertoParticipation::Process.vocabularies[method])
-        pluralized_method = method.to_s.pluralize.to_sym
-        assert_equal model.send(pluralized_method, site_with_vocabularies), site_with_vocabularies.vocabularies.find_by_id(vocabulary_id).terms
-        assert_equal 0, model.send(pluralized_method, site_without_vocabularies).count
-      end
-    end
   end
 end

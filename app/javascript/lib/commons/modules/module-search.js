@@ -45,10 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return I18n.t("layouts.search.person_post_item");
       case 'GobiertoCalendars::Event':
         return I18n.t("layouts.search.event_item");
-      case 'GobiertoParticipation::Contribution':
-        return I18n.t("layouts.search.contribution_item");
-      case 'GobiertoParticipation::Process':
-        return I18n.t("layouts.search.process_item");
       case 'GobiertoPeople::PersonStatement':
         return I18n.t("layouts.search.person_statement_item");
       case 'GobiertoCms::Page':

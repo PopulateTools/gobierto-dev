@@ -10,7 +10,6 @@ ca:
           gobierto_budget_consultations: Consultes de pressupostos
           gobierto_budgets: Pressupostos
           gobierto_observatory: Observatori
-          gobierto_participation: Participació
           gobierto_people: Persones
         notification_frequency:
           daily: Resum diari
@@ -19,7 +18,6 @@ ca:
           immediate: Inmediates
           submit: Desa
           weekly: Resum setmanal
-        participation: Participació
         people: Persones
         submit: Desa
         title: Les teves alertes

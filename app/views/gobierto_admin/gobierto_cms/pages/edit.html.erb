@@ -1,25 +1,9 @@
-<% if @collection.is_a_collection_of_participation_news? %>
 
-  <%= render 'gobierto_admin/gobierto_participation/shared/breadcrumb', last_breadcrumb_item: t('gobierto_admin.gobierto_cms.pages.edit.title'), process: @collection.container %>
-
-  <h1><%= @collection.container.title %></h1>
-
-  <%= render 'gobierto_admin/gobierto_participation/shared/navigation', current_process: @collection.container %>
-
-<% else %>
-
-  <div class="admin_breadcrumb">
-    <%= link_to t("gobierto_admin.welcome.index.title"), admin_root_path %> »
-    <%= link_to t("gobierto_admin.gobierto_cms.pages.index.title"), admin_cms_pages_path %> »
-    <%= link_to @collection.title, admin_common_collection_path(@collection) %> »
-    <%= t(".title") %>
-  </div>
-
-<% end %>
-
-<% if params[:stage_id].present? %>
-  <p><%= link_to t('.back_to_process_stages'),
-                 admin_participation_process_process_stages_path(process_id: @page.process_stage_pages.first.process_stage.process) %></p>
-<% end %>
+<div class="admin_breadcrumb">
+  <%= link_to t("gobierto_admin.welcome.index.title"), admin_root_path %> »
+  <%= link_to t("gobierto_admin.gobierto_cms.pages.index.title"), admin_cms_pages_path %> »
+  <%= link_to @collection.title, admin_common_collection_path(@collection) %> »
+  <%= t(".title") %>
+</div>
 
 <%= render "form" %>

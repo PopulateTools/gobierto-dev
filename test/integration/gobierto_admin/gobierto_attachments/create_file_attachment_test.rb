@@ -11,7 +11,8 @@ module GobiertoAdmin
       end
 
       def collection
-        @collection ||= gobierto_common_collections(:files)
+        # @collection ||= gobierto_common_collections(:files)
+        @collection ||= gobierto_common_collections(:site_attachments)
       end
 
       def admin
@@ -26,11 +27,13 @@ module GobiertoAdmin
         with_signed_in_admin(admin) do
           with_current_site(site) do
             visit @path
-            click_link "Files"
-            assert has_selector?("h1", text: "Sport city")
+
+            # click_link "Files"
+            click_link "Site attachments"
+            assert has_selector?("h1", text: "Site attachments")
 
             click_link "New"
-            assert has_selector?("h1", text: "Sport city")
+            assert has_selector?("h1", text: "New document")
             click_button "Create"
             assert has_alert?("File can't be blank")
           end
@@ -42,12 +45,11 @@ module GobiertoAdmin
           with_current_site(site) do
             visit @path
 
-            click_link "Files"
-
-            assert has_selector?("h1", text: "Sport city")
+            click_link "Site attachments"
+            assert has_selector?("h1", text: "Site attachment")
 
             click_link "New"
-            assert has_selector?("h1", text: "Sport city")
+            assert has_selector?("h1", text: "New document")
 
             fill_in "file_attachment_name", with: "My file_attachment"
             fill_in "file_attachment_description", with: "My file_attachment description"
@@ -68,7 +70,6 @@ module GobiertoAdmin
 
             click_link "View the document"
 
-            assert has_content?("Documents for Sport city")
             assert has_content?("My file_attachment")
           end
         end
@@ -79,11 +80,12 @@ module GobiertoAdmin
           with_current_site(site) do
             visit @path
 
-            click_link "Files"
-            assert has_selector?("h1", text: "Sport city")
+            # click_link "Files"
+            click_link "Site attachments"
+            assert has_selector?("h1", text: "Site attachments")
 
             click_link "New"
-            assert has_selector?("h1", text: "Sport city")
+            assert has_selector?("h1", text: "New document")
 
             fill_in "file_attachment_description", with: "My file_attachment description"
             attach_file "file_attachment_file", Rails.root.join("test/fixtures/files/gobierto_attachments/attachment/pdf-collection-update-attachment.pdf")

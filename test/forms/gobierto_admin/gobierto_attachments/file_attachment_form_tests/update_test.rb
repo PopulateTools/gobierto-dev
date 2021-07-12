@@ -8,7 +8,7 @@ module GobiertoAdmin
     module FileAttachmentFormTests
       class UpdateTest < BaseTest
         def collection
-          @collection ||= gobierto_common_collections(:gender_violence_process_documents)
+          @collection ||= gobierto_common_collections(:site_news)
         end
 
         def existing_attachment

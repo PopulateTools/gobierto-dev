@@ -4,12 +4,6 @@ module GobiertoAttachments
   class AttachmentDecorator < BaseDecorator
     DEFAULT_TEMPLATE = ->(sub_template) { "gobierto_attachments/attachment_documents/templates/#{sub_template}" }
     CONTEXT_CONFIGURATION = {
-      "GobiertoParticipation::Process" => { template: ->(sub_template) { "gobierto_participation/processes/attachments/templates/#{sub_template}" },
-                                            layout: 'gobierto_participation/layouts/application',
-                                            module: 'gobierto_participation' },
-      "GobiertoParticipation"          => { template: ->(sub_template) { "gobierto_participation/attachments/templates/#{sub_template}" },
-                                            layout: 'gobierto_participation/layouts/application',
-                                            module: 'gobierto_participation' },
       :default                         => { template: DEFAULT_TEMPLATE,
                                             layout: nil,
                                             module: nil },

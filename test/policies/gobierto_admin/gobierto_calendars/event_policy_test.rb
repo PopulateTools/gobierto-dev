@@ -29,7 +29,7 @@ module GobiertoAdmin
       alias event active_person_active_event
 
       def process_event
-        @process_event = gobierto_calendars_events(:reading_club)
+        @process_event = gobierto_calendars_events(:richard_published)
       end
 
       def subject

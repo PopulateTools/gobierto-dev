@@ -15,7 +15,6 @@ class User::SubscriptionsController < User::BaseController
     @user_notification_modules = get_user_notification_modules
     @user_notification_gobierto_people_people = get_user_notification_gobierto_people_people
     @user_notification_gobierto_budget_consultations_consultations = get_user_notification_gobierto_budget_consultations_consultations
-    @user_notification_gobierto_participation_processes = get_user_notification_gobierto_participation_processes
     @user_subscription_preferences_form = User::SubscriptionPreferencesForm.new(
       user: current_user,
       site: current_site,
@@ -23,8 +22,7 @@ class User::SubscriptionsController < User::BaseController
       site_to_subscribe: get_current_user_subsciption_to_site,
       modules: get_current_user_subscribed_modules,
       gobierto_people_people: get_current_user_subscribed_gobierto_people_people,
-      gobierto_budget_consultations_consultations: get_current_user_subscribed_gobierto_budet_consultations_consultations,
-      gobierto_participation_processes: get_current_user_subscribed_gobierto_participation_processes
+      gobierto_budget_consultations_consultations: get_current_user_subscribed_gobierto_budet_consultations_consultations
     )
   end
 
@@ -124,21 +122,10 @@ class User::SubscriptionsController < User::BaseController
     current_site.budget_consultations.active
   end
 
-  def get_user_notification_gobierto_participation_processes
-    current_site.processes.active
-  end
-
   def get_current_user_subscribed_gobierto_budet_consultations_consultations
     get_user_notification_gobierto_budget_consultations_consultations.select do |consultation|
       current_user.subscribed_to?(consultation, current_site)
     end.map(&:id)
   end
 
-  def get_current_user_subscribed_gobierto_participation_processes
-    if current_user.subscribed_to?(GobiertoParticipation::Process.new, current_site, :user_subscribed_by_broader_subscription_to?)
-      get_user_notification_gobierto_participation_processes.map(&:id)
-    else
-      current_user.subscriptions.specific.where(subscribable_type: "GobiertoParticipation::Process", site: current_site).pluck(:subscribable_id)
-    end
-  end
 end

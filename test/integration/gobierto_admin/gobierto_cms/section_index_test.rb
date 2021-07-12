@@ -8,6 +8,7 @@ module GobiertoAdmin
       def setup
         super
         @path = admin_cms_sections_path
+        # @path = admin_cms_pages_path
       end
 
       def admin
@@ -32,6 +33,7 @@ module GobiertoAdmin
 
               sections.each do |section|
                 within "tr" do
+                  assert has_content? section.title
                   assert has_link?("View section")
                 end
               end

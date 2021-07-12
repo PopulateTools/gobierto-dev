@@ -16,15 +16,7 @@ module GobiertoAdmin
         end
 
         def collection
-          @collection ||= gobierto_common_collections(:bowling_group_very_active_documents)
-        end
-
-        def collection_of_archived_container
-          @collection_of_archived_container ||= gobierto_common_collections(:group_archived_documents)
-        end
-
-        def archived_container
-          @archived_container ||= gobierto_participation_processes(:group_archived)
+          @collection ||= gobierto_common_collections(:site_attachments)
         end
 
         def test_collection_show
@@ -33,17 +25,6 @@ module GobiertoAdmin
               visit admin_common_collection_path(collection)
 
               assert has_content?(collection.container.title)
-            end
-          end
-        end
-
-        def test_collection_of_archived_container_show
-          with_signed_in_admin(admin) do
-            with_current_site(site) do
-              visit admin_common_collection_path(collection_of_archived_container)
-
-              assert has_content?("The resource the collection belongs to couldn't be found")
-              assert has_no_content?(archived_container.title)
             end
           end
         end

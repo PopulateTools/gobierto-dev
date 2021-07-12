@@ -26,7 +26,6 @@ module GobiertoCms
 
     def test_template
       assert_equal "gobierto_cms/pages/templates/page", site_page_decorated.template
-      assert_equal "gobierto_participation/processes/pages/templates/news", themes_page_decorated.template
 
       site_page_decorated.template = "raw_page"
       assert_equal "gobierto_cms/pages/templates/raw_page", site_page_decorated.template
