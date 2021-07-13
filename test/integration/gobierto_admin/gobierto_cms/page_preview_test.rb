@@ -23,7 +23,7 @@ module GobiertoAdmin
       end
 
       def draft_page
-        @draft_page ||= gobierto_cms_pages(:about_site)
+        @draft_page ||= gobierto_cms_pages(:about_site_draft)
       end
 
       def collection

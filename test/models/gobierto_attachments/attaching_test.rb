@@ -14,7 +14,7 @@ module GobiertoAttachments
     end
 
     def attachable
-      @attachable ||= gobierto_cms_pages(:how_to_participate)
+      @attachable ||= gobierto_cms_pages(:about_site)
     end
 
     def test_create_attaching

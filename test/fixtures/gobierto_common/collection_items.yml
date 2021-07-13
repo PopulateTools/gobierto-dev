@@ -23,6 +23,15 @@ about_on_site:
   item_type: 'GobiertoCms::Page'
   container: madrid (Site)
 
+# about
+about_draft_on_site:
+  collection: site_pages
+  item: about_site_draft
+  item_type: 'GobiertoCms::Page'
+  container: madrid (Site)
+
+
+
 # how_to_participate
 how_to_participate_participation_pages:
   collection: participation_pages
@@ -51,6 +60,7 @@ site_news_1_on_site:
   item_type: 'GobiertoCms::News'
   container: madrid (Site)
 
+# cookies
 cookies_collection_item:
   collection: cookies_collection
   item: cookies_page

@@ -19,16 +19,16 @@ module GobiertoAdmin
         @admin ||= gobierto_admin_admins(:nick)
       end
 
-      def process
-        @process ||= gobierto_participation_processes(:green_city_group_active_empty)
-      end
-
       def person
         @person ||= gobierto_people_people(:richard)
       end
 
-      def event
-        @event ||= gobierto_calendars_events(:innovation_event)
+      def event_published
+        @event ||= gobierto_calendars_events(:richard_published)
+      end
+
+      def event_pending
+        @event ||= gobierto_calendars_events(:richard_published)
       end
 
       def test_list_of_collections
@@ -45,11 +45,6 @@ module GobiertoAdmin
       end
 
       def test_create_collection
-        ::GobiertoCommon::Collection.find_by(
-          container: process,
-          item_type: "GobiertoCalendars::Event"
-        ).destroy
-
         with_javascript do
           with_signed_in_admin(admin) do
             with_current_site(site) do
@@ -59,7 +54,7 @@ module GobiertoAdmin
 
               fill_in "collection_title_translations_en", with: "My collection"
               fill_in "collection_slug", with: "my-collection"
-              find("select#collection_container_global_id").find("option[value='#{process.to_global_id}']").select_option
+              find("select#collection_container_global_id").find("option[value='#{site.to_global_id}']").select_option
               find("select#collection_item_type").find("option[value='GobiertoCalendars::Event']").select_option
 
               switch_locale "ES"
@@ -116,31 +111,45 @@ module GobiertoAdmin
         end
       end
 
-      def test_gobierto_module_events
+      def test_view_published_event
         with_signed_in_admin(admin) do
           with_current_site(site) do
             # for published events
             visit @path
-            click_link "Participation events"
 
-            assert has_content? event.title
+            click_link "Richard calendar"
 
-            within("#person-event-item-#{event.id}") { click_link "View event" }
+            assert has_content? event_published.title
+            within("#person-event-item-#{event_published.id}") { click_link "View event" }
 
-            assert has_selector?("h3", text: event.title)
+            assert has_selector?("h2", text: event_published.title)
+          end
+        end
+      end
 
-            # for pending events
-            event.pending!
-
+      def test_view_pending_event
+        with_signed_in_admin(admin) do
+          with_current_site(site) do
             visit @path
-            click_link "Participation events"
 
-            within("#person-event-item-#{event.id}") { click_link "View event" }
-            assert has_selector?("h3", text: event.title)
+            event_pending.pending!
+            click_link "Richard calendar"
+
+            refute has_content? event_pending.title
+
+            within(".sub_filter") do
+              click_link "Moderation pending"
+            end
+
+            assert has_content? event_pending.title
+
+            within("#person-event-item-#{event_pending.id}") { click_link "View event" }
+            assert has_selector?("h2", text: event_pending.title)
             assert current_url.include?(admin.preview_token)
           end
         end
       end
+
     end
   end
 end

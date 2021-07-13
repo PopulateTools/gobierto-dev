@@ -28,19 +28,20 @@ module GobiertoAdmin
           with_current_site(site) do
             visit @path
 
-            within "table tbody" do
-              assert has_selector?("tr", count: sections.size)
+            table_body_rows = all('tbody tr')
+            assert_equal sections.count, table_body_rows.count
 
-              sections.each do |section|
-                within "tr" do
-                  assert has_content? section.title
-                  assert has_link?("View section")
-                end
-              end
+            table_body_rows.each do |row|
+              assert has_link?("View section")
+            end
+
+            sections.each do |section|
+              assert has_content? section.title
             end
           end
         end
       end
+
     end
   end
 end
