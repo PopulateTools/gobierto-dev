@@ -1,13 +1,22 @@
-# participation_items:
-#   item: about_participation (GobiertoCms::Page)
-#   position: 0
-#   parent_id: nil
-#   section: cms_section_madrid_2
-#   level: 0
+cms_section_madrid_1_item_a:
+  item: site_pages (GobiertoCms::Page)
+  position: 0
+  parent_id: nil
+  section: cms_section_madrid_1
+  level: 0
 
-# participation_items_child:
-#   item: about_participation_details (GobiertoCms::Page)
-#   position: 0
-#   parent_id: nil
-#   section: cms_section_madrid_2
-#   level: 0
+cms_section_madrid_1_item_b:
+  item: about_site (GobiertoCms::Page)
+  position: 0
+  parent_id: nil
+  section: cms_section_madrid_1
+  level: 0
+
+
+cms_section_madrid_1_item_b:
+  item: about_site (GobiertoCms::Page)
+  position: 0
+  parent_id: nil
+  section: cookies_section
+  item_id: cookies_page
+  level: 0
