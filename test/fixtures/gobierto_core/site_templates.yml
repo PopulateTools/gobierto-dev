@@ -1,4 +1,4 @@
-cortegada_site_template_index:
+site_with_template_index:
   markup: "<div class='gradient-bg'>My Template</div>"
   template: application_layout
-  site: cortegada
+  site: site_with_template_replaced
