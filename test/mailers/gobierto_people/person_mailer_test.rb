@@ -27,7 +27,7 @@ module GobiertoPeople
       assert_equal ["no-reply@gobierto.dev"], email.from
       assert_equal ["foo@example.com"], email.reply_to
       assert_equal [person.email], email.to
-      assert_equal "You have received a new message from Transparencia y Participación", email.subject
+      assert_equal "You have received a new message from Transparencia y Participción", email.subject
     end
   end
 end

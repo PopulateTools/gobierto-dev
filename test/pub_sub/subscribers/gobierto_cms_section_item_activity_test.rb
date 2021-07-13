@@ -16,7 +16,7 @@ class Subscribers::GobiertoCmsSectionItemActivityTest < ActiveSupport::TestCase
   end
 
   def section_item
-    @section_item ||= gobierto_cms_section_items(:participation_items)
+    @section_item ||= gobierto_cms_section_items(:cms_section_madrid_1_item_a)
   end
 
   def admin

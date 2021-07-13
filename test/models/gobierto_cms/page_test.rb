@@ -22,7 +22,7 @@ module GobiertoCms
     end
 
     def module_page
-      @module_page ||= gobierto_cms_pages(:how_to_participate)
+      @module_page ||= gobierto_cms_pages(:privacy)
     end
 
     def attachable_without_attachment

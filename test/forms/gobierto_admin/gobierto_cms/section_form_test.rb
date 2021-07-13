@@ -5,6 +5,7 @@ require "test_helper"
 module GobiertoAdmin
   module GobiertoCms
     class SectionFormTest < ActiveSupport::TestCase
+
       def valid_section_form
         @valid_section_form ||= SectionForm.new(
           site_id: site.id,
@@ -22,7 +23,7 @@ module GobiertoAdmin
       end
 
       def section
-        @section ||= gobierto_cms_sections(:participation)
+        @section ||= gobierto_cms_sections(:cms_section_madrid_1)
       end
 
       def site

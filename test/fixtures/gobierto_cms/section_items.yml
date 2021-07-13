@@ -23,11 +23,4 @@ cms_section_madrid_1_item_b:
   item_id: cookies_page
   level: 0
 
-# cms_section_madrid_1_item_b:
-#   item: consultation_faq (GobiertoCms::Page)
-#   position: 0
-#   parent_id: nil
-#   section: cms_section_madrid_1
-#   level: 0
-
 <%= ERB.new(IO.read(Rails.root.join "test/fixtures_archive/gobierto_cms/section_items/santander/other.yml")).result %>
