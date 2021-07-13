@@ -60,6 +60,13 @@ site_news:
   container: madrid (Site)
   item_type: GobiertoCms::News
 
+cookies_collection:
+  site: madrid
+  title_translations: <%= {'en' => 'Cookies info', 'es' => 'Cookies info' }.to_json %>
+  slug: cookies-info
+  container: madrid (Site)
+  item_type: GobiertoCms::News
+
 site_attachments:
   site: madrid
   title_translations: <%= {'en' => 'Site attachments', 'es' => 'Adjuntos del sitio' }.to_json %>

@@ -7,8 +7,6 @@ ca:
           success_html: La pàgina ha estat creada correctament. <a href="%{link}">Veure
             la pàgina</a>.
         destroy:
-          error_associated_items: 'No es pot eliminar la pàgina perquè encara té elements
-            associats: %{links}'
           success: La pàgina ha estat eliminada correctament
         recover:
           success: La pàgina ha estat recuperada correctament

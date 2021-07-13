@@ -6,8 +6,6 @@ en:
         create:
           success_html: Page created successfully. <a href="%{link}">View the page</a>.
         destroy:
-          error_associated_items: 'The page can not be deleted because it still has
-            associated elements: %{links}'
           success: Page archived successfully
         recover:
           success: The page has been successfully recovered

@@ -41,7 +41,6 @@ module GobiertoAdmin
             with_current_site(site) do
               visit @path
 
-              # byebug
               assert has_selector?("h1", text: "CMS")
 
 

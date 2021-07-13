@@ -4,6 +4,11 @@ require "test_helper"
 
 module GobiertoCms
   class VisitPageInSectionTest < ActionDispatch::IntegrationTest
+
+    def remove_tags(text)
+      ActionView::Base.full_sanitizer.sanitize text
+    end
+
     def page_path
       @page_path ||= gobierto_cms_section_path(
         id: cms_page.slug,
@@ -16,11 +21,11 @@ module GobiertoCms
     end
 
     def section
-      @section ||= gobierto_cms_sections(:cms_section_madrid)
+      @section ||= gobierto_cms_sections(:cookies_section)
     end
 
     def cms_page
-      @cms_page ||= gobierto_cms_pages(:about_participation)
+      @cms_page ||= gobierto_cms_pages(:about_site)
     end
 
     def test_visit_page_in_section
@@ -33,7 +38,7 @@ module GobiertoCms
 
         within "article" do
           assert has_selector?("h1", text: cms_page.title)
-          assert has_content?("About participation description")
+          assert has_content?( remove_tags(cms_page.body_translations["en"]))
         end
       end
     end

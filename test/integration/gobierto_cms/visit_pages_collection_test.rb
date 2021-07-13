@@ -17,17 +17,20 @@ module GobiertoCms
       @santander_cms_collection ||= gobierto_common_collections(:santander_cms_pages)
     end
 
-    def participation_collection
-      @participation_collection ||= gobierto_common_collections(:participation_pages)
+
+
+    def madrid_cms_collection
+      @participation_collection ||= gobierto_common_collections(:site_pages)
     end
 
-    def participation_collection_pages
-      @participation_collection_pages ||= madrid.pages.where(id: participation_collection.pages_in_collection).active
+    def madrid_cms_collection_pages
+      @participation_collection_pages ||= madrid.pages.where(collection_id: madrid_cms_collection.id).active
     end
 
-    def participation_collection_page
-      participation_collection_pages.first
+    def madrid_cms_collection_page
+      @madrid_cms_collection_page ||= madrid_cms_collection_pages.first
     end
+
 
     def test_visit_collection
       collection_public_pages = [
@@ -61,28 +64,24 @@ module GobiertoCms
       end
     end
 
-    def test_visit_participation_collection
+    def test_visit_madrid_cms_collection
       with_current_site(madrid) do
-        visit gobierto_cms_pages_path(participation_collection.slug)
+        visit gobierto_cms_pages_path(madrid_cms_collection.slug)
 
-        assert has_content?(participation_collection.title)
+        assert has_content?(madrid_cms_collection.title)
 
-        participation_collection_pages.each do |page|
+        # check every page into collection have link
+        madrid_cms_collection_pages.each do |page|
           assert has_link?(page.title)
         end
 
-        click_link participation_collection_page.title
+        # visit first page
+        assert has_content?(madrid_cms_collection_page.title)
+        click_link madrid_cms_collection_page.title
 
-        assert has_content?(participation_collection_page.title)
-        assert has_content?(participation_collection.title)
+        # breadcrumb
+        assert has_content?("#{madrid_cms_collection.title} / #{madrid_cms_collection_page.title}")
 
-        assert has_content?("#{participation_collection.title} / #{participation_collection_page.title}")
-
-        within "nav.main-nav" do
-          within ".main-nav-item.active" do
-            assert has_content?("Participation")
-          end
-        end
       end
     end
 

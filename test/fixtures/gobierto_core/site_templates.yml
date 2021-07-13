@@ -1,0 +1,4 @@
+cortegada_site_template_index:
+  markup: "<div class='gradient-bg'>My Template</div>"
+  template: application_layout
+  site: cortegada

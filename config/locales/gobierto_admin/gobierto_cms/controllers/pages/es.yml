@@ -7,8 +7,6 @@ es:
           success_html: La página ha sido creada correctamente. <a href="%{link}">Ver
             la página</a>.
         destroy:
-          error_associated_items: 'No se puede eliminar la página porque todavía tiene
-            elementos asociados: %{links}'
           success: La página ha sido eliminada correctamente
         recover:
           success: La página ha sido recuperada correctamente

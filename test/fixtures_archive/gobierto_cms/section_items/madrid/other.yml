@@ -1,13 +1,13 @@
-participation_items:
-  item: about_participation (GobiertoCms::Page)
-  position: 0
-  parent_id: nil
-  section: participation
-  level: 0
+# participation_items:
+#   item: about_participation (GobiertoCms::Page)
+#   position: 0
+#   parent_id: nil
+#   section: cms_section_madrid_2
+#   level: 0
 
-participation_items_child:
-  item: about_participation_details (GobiertoCms::Page)
-  position: 0
-  parent_id: nil
-  section: participation
-  level: 0
+# participation_items_child:
+#   item: about_participation_details (GobiertoCms::Page)
+#   position: 0
+#   parent_id: nil
+#   section: cms_section_madrid_2
+#   level: 0

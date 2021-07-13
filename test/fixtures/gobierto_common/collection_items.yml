@@ -1,4 +1,167 @@
 <%= ERB.new(IO.read(Rails.root.join "test/fixtures_archive/gobierto_common/collection_items/madrid/attachments.yml")).result %>
 <%= ERB.new(IO.read(Rails.root.join "test/fixtures_archive/gobierto_common/collection_items/madrid/events.yml")).result %>
-<%= ERB.new(IO.read(Rails.root.join "test/fixtures_archive/gobierto_common/collection_items/madrid/pages.yml")).result %>
+
+<%#= ERB.new(IO.read(Rails.root.join "test/fixtures_archive/gobierto_common/collection_items/madrid/pages.yml")).result %>
+# consultation_faq
+consultation_faq_on_site:
+  collection: site_pages
+  item: consultation_faq
+  item_type: 'GobiertoCms::Page'
+  container: madrid (Site)
+
+# privacy
+privacy_on_site:
+  collection: site_pages
+  item: privacy
+  item_type: 'GobiertoCms::Page'
+  container: madrid (Site)
+
+# about
+about_on_site:
+  collection: site_pages
+  item: about_site
+  item_type: 'GobiertoCms::Page'
+  container: madrid (Site)
+
+# how_to_participate
+how_to_participate_participation_pages:
+  collection: participation_pages
+  item: how_to_participate
+  item_type: 'GobiertoCms::Page'
+  container: madrid (Site)
+
+# about_participation
+about_participation_on_site:
+  collection: site_pages
+  item: about_participation
+  item_type: 'GobiertoCms::Page'
+  container: madrid (Site)
+
+# about_participation_details
+about_participation_details_on_site:
+  collection: site_pages
+  item: about_participation_details
+  item_type: 'GobiertoCms::Page'
+  container: madrid (Site)
+
+# site news
+site_news_1_on_site:
+  collection: site_news
+  item: site_news_1
+  item_type: 'GobiertoCms::News'
+  container: madrid (Site)
+
+cookies_collection_item:
+  collection: cookies_collection
+  item: cookies_page
+  item_type: 'GobiertoCms::Page'
+  container: madrid (Site)
+
+# themes
+
+themes_on_process:
+  collection: news
+  item: themes
+  item_type: 'GobiertoCms::News'
+  container: sport_city_process (GobiertoParticipation::Process)
+
+themes_on_site:
+  collection: news
+  item: themes
+  item_type: 'GobiertoCms::News'
+  container: madrid (Site)
+
+themes_on_participation:
+  collection: news
+  item: themes
+  item_type: 'GobiertoCms::News'
+  container_type: GobiertoParticipation
+
+themes_on_issue:
+  collection: news
+  item: themes
+  item_type: 'GobiertoCms::News'
+  container: culture_term (GobiertoCommon::Term)
+
+themes_on_scope:
+  collection: news
+  item: themes
+  item_type: 'GobiertoCms::News'
+  container: old_town_term (GobiertoCommon::Term)
+
+# themes_draft
+
+themes_draft_on_process:
+  collection: news
+  item: themes_draft
+  item_type: 'GobiertoCms::News'
+  container: sport_city_process (GobiertoParticipation::Process)
+
+themes_draft_on_site:
+  collection: news
+  item: themes_draft
+  item_type: 'GobiertoCms::News'
+  container: madrid (Site)
+
+themes_draft_on_participation:
+  collection: news
+  item: themes_draft
+  item_type: 'GobiertoCms::News'
+  container_type: GobiertoParticipation
+
+themes_draft_on_issue:
+  collection: news
+  item: themes_draft (GobiertoAttachments::Attachment)
+  item_type: 'GobiertoCms::News'
+  container: culture_term (GobiertoCommon::Term)
+
+themes_draft_on_scope:
+  collection: news
+  item: themes_draft (GobiertoAttachments::Attachment)
+  item_type: 'GobiertoCms::News'
+  container: old_town_term (GobiertoCommon::Term)
+
+# notice_1
+
+notice_1_on_site:
+  collection: site_attachments
+  item: notice_1
+  item_type: 'GobiertoCms::News'
+  container: madrid (Site)
+
+notice_1_on_issue:
+  collection: site_attachments
+  item: notice_1
+  item_type: 'GobiertoCms::News'
+  container: women_term (GobiertoCommon::Term)
+
+notice_1_on_scope:
+  collection: site_attachments
+  item: notice_1
+  item_type: 'GobiertoCms::News'
+  container: old_town_term (GobiertoCommon::Term)
+
+# notice_2
+
+notice_2_on_issue:
+  collection: site_attachments_archived
+  item: notice_2
+  item_type: 'GobiertoCms::News'
+  container: women_term (GobiertoCommon::Term)
+
+notice_2_on_scope:
+  collection: site_attachments_archived
+  item: notice_2
+  item_type: 'GobiertoCms::News'
+  container: old_town_term (GobiertoCommon::Term)
+
+# about_site
+
+site_page_1:
+  collection: site_pages
+  item: about_site
+  item_type: 'GobiertoCms::Page'
+  container: madrid (Site)
+
+
 <%= ERB.new(IO.read(Rails.root.join "test/fixtures_archive/gobierto_common/collection_items/santander/pages.yml")).result %>

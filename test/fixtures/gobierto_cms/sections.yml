@@ -3,6 +3,16 @@ cms_section_madrid_1:
   slug: 'a-section'
   site: madrid
 
+cms_section_madrid_2:
+  title_translations: <%= { 'en' => 'CMS section 2', 'es' => 'Sección CMS 2' }.to_json %>
+  slug: 'b-section'
+  site: madrid
+
+cookies_section:
+  title_translations: <%= { 'en' => 'cookie section', 'es' => 'cookie section' }.to_json %>
+  slug: 'cookie-section'
+  site: madrid
+
 global_navigation_santander:
   title_translations: <%= { 'en' => 'Site navigation', 'es' => 'Navegación site' }.to_json %>
   slug: 'global-navigation'
