@@ -400,6 +400,13 @@ site_pages_santander:
   container: santander (Site)
   item_type: GobiertoCms::Page
 
+other_collection_of_pages:
+  site: santander
+  title_translations: <%= {'en' => 'other collection of pages', 'es' => 'other collection of pages' }.to_json %>
+  slug: other-collection-of-pages
+  container: santander (Site)
+  item_type: GobiertoCms::Page
+
 site_news_santander:
   site: santander
   title_translations: <%= {'en' => 'Site news', 'es' => 'Noticias del sitio' }.to_json %>

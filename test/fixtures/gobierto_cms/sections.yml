@@ -12,3 +12,8 @@ cms_pages_santander:
   title_translations: <%= { 'en' => 'CMS Section', 'es' => 'Sección CMS' }.to_json %>
   slug: 'cms'
   site: santander
+
+other_section_santander:
+  title_translations: <%= { 'en' => 'other section', 'es' => 'other section' }.to_json %>
+  slug: 'other-section'
+  site: santander

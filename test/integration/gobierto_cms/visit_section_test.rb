@@ -115,5 +115,21 @@ module GobiertoCms
         end
       end
     end
+
+    def test_visit_section_with_right_and_wrong_page
+      with_current_site(site) do
+        other_section = gobierto_cms_sections(:other_section_santander)
+        other_page = gobierto_cms_pages(:other_page_for_other_section)
+
+        cms_page = gobierto_cms_pages(:cms_section_l0_p0_page)
+
+        get gobierto_cms_section_item_path(slug_section: other_section.slug, id: other_page.slug)
+        assert_response :success
+
+        get gobierto_cms_section_item_path(slug_section: other_section.slug, id: cms_page.slug)
+        assert_response :not_found
+      end
+    end
+
   end
 end

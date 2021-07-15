@@ -11,3 +11,10 @@ participation_items_child:
   parent_id: nil
   section: participation
   level: 0
+
+other_section_to_other_page_item_santander:
+  item: other_page_for_other_section (GobiertoCms::Page)
+  position: 0
+  parent_id: nil
+  section: other_section_santander
+  level: 0

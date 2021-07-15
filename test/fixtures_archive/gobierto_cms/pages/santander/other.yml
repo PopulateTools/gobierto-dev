@@ -7,3 +7,14 @@ about:
   site: santander
   published_on: <%= Date.current %>
   template:
+
+other_page_for_other_section:
+  title_translations: <%= {'en' => 'other page for other section', 'es' => 'other page for other section' }.to_json %>
+  body_translations: <%= {'en' => 'body of other page for other section', 'es' => 'body of other page for other section' }.to_json %>
+  body_source_translations: <%= {'en' => 'body of other page for other section', 'es' => 'body of other page for other section' }.to_json %>
+  slug: 'other-page-for-other-section'
+  visibility_level: <%= GobiertoCms::Page.visibility_levels[:active] %>
+  site: santander
+  published_on: <%= Date.current %>
+  collection: other_collection_of_pages
+  template:

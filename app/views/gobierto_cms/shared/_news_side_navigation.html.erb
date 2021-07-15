@@ -1,6 +1,6 @@
 <menu class="side_navigation">
   <ul>
-    <li><%= link_to @collection.title, gobierto_cms_news_index_path(@collection.slug) %></a>
+    <li><%= link_to @collection.title, gobierto_cms_news_index_path(@collection.slug) %>
     <ul>
       <% @pages.each do |page| %>
         <li><%= link_to page.title, gobierto_cms_news_path(page.slug) %></li>

@@ -5,7 +5,7 @@
 
   <% elsif @collection %>
     <ul>
-      <li><%= link_to @collection.title, gobierto_cms_pages_path(@collection.slug) %></a>
+      <li><%= link_to @collection.title, gobierto_cms_pages_path(@collection.slug) %>
         <ul>
           <%= render partial: "gobierto_cms/shared/page", collection: @pages, cached: true %>
         </ul>

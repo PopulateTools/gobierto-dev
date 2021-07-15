@@ -87,3 +87,10 @@ cms_section_l1_p3ap2a_page_on_site:
   item: cms_section_l1_p3ap2a_page
   item_type: 'GobiertoCms::Page'
   container: santander (Site)
+
+
+other_section_other_page_item:
+  collection: other_collection_of_pages
+  item: other_page_for_other_section
+  item_type: 'GobiertoCms::Page'
+  container: santander (Site)
