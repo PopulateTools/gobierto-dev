@@ -51,7 +51,7 @@ module GobiertoAdmin
 
           within("header") { click_link "View item" }
 
-          assert_equal "#{preview_test_conf[:item_public_url]}?preview_token=#{admin.preview_token}", current_url
+          assert current_url.include? "#{preview_test_conf[:item_public_url]}?preview_token=#{admin.preview_token}"
         end
       end
     end

@@ -46,9 +46,16 @@
       <td><%= project.status&.name %></td>
       <td><%= time_ago_in_words(project.updated_at) %></td>
       <td>
-        <%= link_to gobierto_plans_plan_type_preview_url(@plan, host: current_site.domain), class: 'view_item' do %>
-          <i class="fas fa-eye"></i>
-          <%= t(".view") %>
+        <% if project.published? %>
+          <%= link_to gobierto_plans_project_path(slug: @plan.plan_type.slug, year: @plan.year, id: project.id), class: 'view_item' do %>
+            <i class="fas fa-eye"></i>
+            <%= t(".view") %>
+          <% end %>
+        <% else %>
+          <%= link_to gobierto_plans_project_path(slug: @plan.plan_type.slug, year: @plan.year, id: project.id, preview_token: current_admin.preview_token), class: 'view_item' do %>
+            <i class="fas fa-eye"></i>
+            <%= t(".view") %>
+          <% end %>
         <% end %>
       </td>
       <td>
