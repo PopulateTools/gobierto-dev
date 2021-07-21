@@ -278,6 +278,64 @@ project_metrics_alternative_project_value:
     ]
   }.to_json %>
 
+multiple_indicators_plan_statistical_project_value_1:
+    item: multiple_indicators_plan_statistical_project (GobiertoPlans::Node)
+    custom_field: multiple_indicators_plan_statistical_custom_field
+    payload: <%= {
+      "multiple-indicators-statistical" => [
+        {
+          taxes_increases_percent: 1,
+          taxes_collection_percent: 95,
+          proposal_presented: 10,
+          proposal_approved: 5,
+          proposal_done: 3,
+          fraud_detected: 20,
+          date: "2019-01-01"
+        },
+        {
+          taxes_increases_percent: 3,
+          taxes_collection_percent: 90,
+          proposal_presented: 5,
+          proposal_approved: 2,
+          proposal_done: 2,
+          fraud_detected: 20,
+          date: "2020-01-01"
+        },
+        {
+          taxes_increases_percent: 4,
+          taxes_collection_percent: 99,
+          proposal_presented: 3,
+          proposal_approved: 1,
+          proposal_done: 0,
+          fraud_detected: 20,
+          date: "2021-01-01"
+        },
+      ]
+    }.to_json %>
+
+multiple_indicators_plan_statistical_project_value_2:
+  item: multiple_indicators_plan_opinion_project (GobiertoPlans::Node)
+  custom_field: multiple_indicators_plan_opinion_custom_field
+  payload: <%= {
+    "multiple-indicators-opinion" => [
+      {
+        opinion_suspended: 60,
+        opinion_approved: 40,
+        date: "2019-01-01"
+      },
+      {
+        opinion_suspended: 50,
+        opinion_approved: 50,
+        date: "2020-01-01"
+      },
+      {
+        opinion_suspended: 30,
+        opinion_approved: 70,
+        date: "2021-01-01"
+      },
+    ]
+  }.to_json %>
+
 ## Investments projects
 
 sports_center_cost_custom_field_record:

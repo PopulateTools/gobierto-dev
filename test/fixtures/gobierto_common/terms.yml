@@ -203,7 +203,29 @@ city_plan_term:
   updated_at: 2016-11-01 00:02:00
   external_id: 6
 
-## plan_projects_statuses_vocabulary
+## multiple_indicators_plan_vocabulary
+
+multiple_indicators_plan_vocabulary_stadistical_term:
+  vocabulary: multiple_indicators_plan_vocabulary
+  name_translations: <%= { 'en' => 'Statistical',
+                           'es' => 'Estadisticas' }.to_json %>
+  slug: statistical
+  level: 0
+  position: 1
+  created_at: 2021-11-01 00:02:00
+  updated_at: 2021-11-01 00:02:00
+  external_id: 1
+
+multiple_indicators_plan_vocabulary_opinion_term:
+  vocabulary: multiple_indicators_plan_vocabulary
+  name_translations: <%= { 'en' => 'Opinion',
+                           'es' => 'Opinion' }.to_json %>
+  slug: opinion
+  level: 0
+  position: 2
+  created_at: 2021-11-01 00:02:00
+  updated_at: 2021-11-01 00:02:00
+  external_id: 2
 
 not_started_plan_status_term:
   vocabulary: plan_projects_statuses_vocabulary

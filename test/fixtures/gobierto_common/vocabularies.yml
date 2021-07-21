@@ -48,6 +48,16 @@ indicators_vocabulary:
   name_translations: <%= { es: "Vocabulario de Indicadores de Madrid", en: "Madrid Indicators Vocabulary" }.to_json %>
   slug: indicators-vocabulary
 
+multiple_indicators_plan_vocabulary:
+  site: madrid
+  name_translations: <%= { es: "Vocabulario para multiples Indicadores de Madrid", en: "Madrid Multiple Indicators Vocabulary" }.to_json %>
+  slug: multiple-indicators-vocabulary
+
+multiple_indicators_plan_vocabulary_for_states:
+  site: madrid
+  name_translations: <%= { es: "Vocabulario para estados de multiples Indicadores de Madrid", en: "Madrid Multiple Indicators of state Vocabulary" }.to_json %>
+  slug: multiple-indicators-state-vocabulary
+
 human_resources_vocabulary:
   site: madrid
   name_translations: <%= { es: "Recursos Humanos", en: "Human Resources" }.to_json %>

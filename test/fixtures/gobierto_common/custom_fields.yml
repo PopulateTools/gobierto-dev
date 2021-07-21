@@ -463,7 +463,9 @@ madrid_users_custom_field_issues:
     vocabulary_id: ActiveRecord::FixtureSet.identify(:issues_vocabulary)
   }.to_json %>
 
-# Dashboards plan
+# GobiertoPlans
+
+## Plans(:dashboards_plan)
 dashboards_plan_project_metrics:
   site: madrid
   class_name: "GobiertoPlans::Node"
@@ -505,6 +507,125 @@ dashboards_plan_project_metrics:
           {
             "id": "date",
             "type": "text",
+             "name_translations": {
+              "en": "Date",
+              "es": "Fecha"
+            }
+          }
+        ]
+      }
+    }
+  }.to_json %>
+
+## Plans(:multiple_indicators_plan)
+multiple_indicators_plan_statistical_custom_field:
+  site: madrid
+  class_name: "GobiertoPlans::Node"
+  instance: multiple_indicators_plan (GobiertoPlans::Plan)
+  mandatory: false
+  position: 1
+  name_translations: <%= { en: "Statistical Government", es: "Estadisticas de Gobierno" }.to_json %>
+  field_type: <%= GobiertoCommon::CustomField.field_types[:plugin] %>
+  uid: multiple-indicators-statistical
+  options: <%= {
+    configuration: {
+      plugin_type: "table",
+      plugin_configuration: {
+        "columns": [
+          {
+            "id": "taxes_increases_percent",
+            "type": "integer",
+            "name_translations": {
+              "en": "taxes increase percent",
+              "es": "subidas de impuestos"
+            }
+          },
+          {
+            "id": "taxes_collection_percent",
+            "type": "integer",
+            "name_translations": {
+              "en": "taxes collection percent",
+              "es": "recaudacion de impuestos"
+            }
+          },
+          {
+            "id": "proposal_presented",
+            "type": "integer",
+            "name_translations": {
+              "en": "proposals presented",
+              "es": "proposiciones presentadas"
+            }
+          },
+          {
+            "id": "proposal_approved",
+            "type": "integer",
+            "name_translations": {
+              "en": "proposal approved",
+              "es": "propuestas aprobadas"
+            }
+          },
+          {
+            "id": "proposal_done",
+            "type": "text",
+             "name_translations": {
+              "en": "proposal done",
+              "es": "propuestas implementadas"
+            }
+          },
+          {
+            "id": "fraud_detected",
+            "type": "text",
+             "name_translations": {
+              "en": "fraud detected",
+              "es": "fraudes detectados"
+            }
+          },
+          {
+            "id": "date",
+            "type": "date",
+             "name_translations": {
+              "en": "Date",
+              "es": "Fecha"
+            }
+          }
+        ]
+      }
+    }
+  }.to_json %>
+
+multiple_indicators_plan_opinion_custom_field:
+  site: madrid
+  class_name: "GobiertoPlans::Node"
+  instance: multiple_indicators_plan (GobiertoPlans::Plan)
+  mandatory: false
+  position: 1
+  name_translations: <%= { en: "Opinion", es: "Opinion" }.to_json %>
+  field_type: <%= GobiertoCommon::CustomField.field_types[:plugin] %>
+  uid: multiple-indicators-opinion
+  options: <%= {
+    configuration: {
+      plugin_type: "table",
+      plugin_configuration: {
+        "columns": [
+          {
+            "id": "opinion_suspended",
+            "type": "integer",
+            "name_translations": {
+              "en": "Failed",
+              "es": "Suspenso"
+            }
+          },
+          {
+            "id": "opinion_approved",
+            "type": "integer",
+            "name_translations": {
+              "en": "Approved",
+              "es": "Aprobado"
+            }
+          },
+          {
+            "id": "date",
+            "type": "date",
              "name_translations": {
               "en": "Date",
               "es": "Fecha"

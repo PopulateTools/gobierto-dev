@@ -42,6 +42,7 @@ en:
           delete_contents_confirm: Confirm you want to delete projects from this plan
           export_csv: Export to CSV
           import_csv: Import from CSV
+          indicators: Indicators
           placeholders:
             configuration_data: '{ "open_node": true }'
             css: ".gobierto_planification section.level_0 .cat_1 { background-color:
@@ -51,6 +52,7 @@ en:
             slug: about-this-plan
             title: Plan title
             year: 2018
+          projects: Projects
           publish_last_version_automatically: Publish new versions of projects automatically
         import_csv:
           defaults:

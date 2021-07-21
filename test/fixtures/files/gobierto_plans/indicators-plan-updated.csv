@@ -1,0 +1,13 @@
+Node.Title,Node.external_id,custom_field,col_1,col_2,col_3,col_4,col_5,col_6,col_7
+Indicator example plan,6,multiple-indicators-statistical,1,95,10,5,3,20,2019-01-01
+Indicator example plan,6,multiple-indicators-statistical,3,90,5,2,2,20,2020-01-01
+Indicator example plan,6,multiple-indicators-statistical,4,99,3,1,0,20,2021-01-01
+Indicator example plan,6,multiple-indicators-statistical,5,90,4,1,0,21,2021-06-14
+Indicator example plan,7,multiple-indicators-opinion,60,40,2019-01-01,,,,
+Indicator example plan,7,multiple-indicators-opinion,50,50,2020-01-01,,,,
+Indicator example plan,7,multiple-indicators-opinion,30,70,2021-01-01,,,,
+Indicator example plan,7,multiple-indicators-opinion,21,79,2021-07-14,,,,
+Indicator example plan,7,multiple-indicators-opinion,20,80,2021-07-15,,,,
+Indicator example plan,7,multiple-indicators-opinion,19,81,2021-07-16,,,,
+Indicator example plan,7,multiple-indicators-opinion,18,82,2021-07-17,,,,
+Indicator example plan,7,multiple-indicators-opinion,17,83,2021-07-18,,,,

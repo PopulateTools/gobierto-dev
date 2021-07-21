@@ -132,6 +132,13 @@ module GobiertoAdmin
         end
       end
 
+      def export_indicator_csv
+        @plan = find_plan
+        respond_to do |format|
+          format.csv { render csv: ::GobiertoPlans::IndicatorDataDecorator.new(@plan).csv, filename: "#{@plan.title.parameterize.dasherize}-indicators" }
+        end
+      end
+
       def import_data
         @plan = find_plan
 

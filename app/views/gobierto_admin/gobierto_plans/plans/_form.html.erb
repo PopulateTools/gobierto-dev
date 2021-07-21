@@ -128,10 +128,17 @@
               <% end %>
             </div>
             <div class="m_v_1">
-              <%= link_to admin_plans_plan_export_csv_path(@plan), target: "_blank" do %>
                 <i class="fas fa-table"></i>
                 <%= t(".export_csv") %>
-              <% end %>
+                <%= link_to admin_plans_plan_export_csv_path(@plan), target: "_blank" do %>
+                  <%= t(".projects") %>
+                <% end %>
+                <% if @plan.have_indicators? %>
+                  -
+                  <%= link_to admin_plans_plan_export_indicator_csv_path(@plan), target: "_blank" do %>
+                    <%= t(".indicators") %>
+                  <% end %>
+                <% end %>
             </div>
           </div>
           <div class="m_v_1">

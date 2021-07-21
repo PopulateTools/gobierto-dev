@@ -40,6 +40,7 @@ scholarships_in_school_cateens:
   ends_at: 2019-11-01
   categories: economy_economic_plan_term
   visibility_level: <%= GobiertoPlans::Node.visibility_levels["draft"] %>
+  external_id: 3
 
 dashboard_project:
   name_translations: <%= {
@@ -52,6 +53,7 @@ dashboard_project:
   ends_at: 2020-12-31
   categories: dashboards_plan_term
   visibility_level: <%= GobiertoPlans::Node.visibility_levels["published"] %>
+  external_id: 4
 
 dashboard_alternative_project:
   name_translations: <%= {
@@ -64,3 +66,30 @@ dashboard_alternative_project:
   ends_at: 2022-12-31
   categories: dashboards_plan_term
   visibility_level: <%= GobiertoPlans::Node.visibility_levels["published"] %>
+  external_id: 5
+
+multiple_indicators_plan_statistical_project:
+  name_translations: <%= {
+    en: "Government Statistical",
+    es: "Estadisticas de gobierno"
+  }.to_json %>
+  status:
+  progress: 0
+  starts_at: 2021-01-01
+  ends_at: 2022-12-31
+  categories: multiple_indicators_plan_vocabulary_stadistical_term
+  visibility_level: <%= GobiertoPlans::Node.visibility_levels["published"] %>
+  external_id: 6
+
+multiple_indicators_plan_opinion_project:
+  name_translations: <%= {
+    en: "Poll opinion about government ",
+    es: "Encuestas de opinion del gobierno"
+  }.to_json %>
+  status:
+  progress: 0
+  starts_at: 2021-01-01
+  ends_at: 2022-12-31
+  categories: multiple_indicators_plan_vocabulary_opinion_term
+  visibility_level: <%= GobiertoPlans::Node.visibility_levels["published"] %>
+  external_id: 7

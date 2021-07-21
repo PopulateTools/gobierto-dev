@@ -43,6 +43,7 @@ es:
             plan
           export_csv: Exportar a CSV
           import_csv: Importar desde CSV
+          indicators: Indicadores
           placeholders:
             configuration_data: '{ "open_node": true }'
             css: ".gobierto_planification section.level_0 .cat_1 { background-color:
@@ -52,6 +53,7 @@ es:
             slug: acerca-de-este-plan
             title: Título del plan
             year: 2018
+          projects: Proyectos
           publish_last_version_automatically: Publicar las versiones nuevas de los
             proyectos automáticamente
         import_csv:

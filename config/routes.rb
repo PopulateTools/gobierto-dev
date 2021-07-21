@@ -198,6 +198,7 @@ Rails.application.routes.draw do
           end
           get :import_csv
           get :export_csv, defaults: { format: "csv" }
+          get :export_indicator_csv, defaults: { format: "csv" }
           delete :delete_contents
           put :recover
           patch :import_data
